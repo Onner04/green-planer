@@ -103,7 +103,7 @@
 
             <div class="header-logo">
                 <a class="header-logo__link" href="#">
-                    <h2 class="header-logo__link-title">tree<h2>
+                    <img class="header-logo-img"  src="{{ url('assest') }}/img/logo.jpg" alt="">
                 </a>
             </div>
             <div class="header-menu  hide-on-mobile-table">
@@ -180,7 +180,7 @@
 
         </header>
 
-        <div class="app__container">
+        <div class="app__container" style="width:100% ;">
             @yield('home')
         </div>
         <div class="contact">

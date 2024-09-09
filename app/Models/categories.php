@@ -11,7 +11,7 @@ class categories extends Model
     
     protected $fillable = ['name','status','link'];
 
-    public function categorySub(){
-        return $this->hasMany(categoryChilds::class);
+    public function categoryChild(){
+        return $this->hasMany(categoryChilds::class,'category_id');
     }
 }

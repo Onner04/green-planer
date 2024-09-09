@@ -9,32 +9,41 @@
               <div class="body-add-box-content">
                   <h3 class="box-content-title">Thêm mới menu</h3>
               </div>
-              <div class="body-box-add-select">
-                  <p class="box-add-select-title">Tên menu</p>
-                  <input type="text" placeholder="Nhập tên menu" class="box-add-select-input">
-              </div>
-              <div class="body-box-add-select">
-                  <label style="font-size:15px ;" for="">Danh mục cha</label>
-                  <select class="form-control" name="category_id">             
-                    <option value="">test</option>                 
-                  </select>
+              <form action="" method="POST">
+                @csrf
+                <div class="body-box-add-select">
+                    <p class="box-add-select-title">Tên menu</p>
+                    <input type="text" value="{{old('name')}}" name="name" placeholder="Nhập tên menu" class="box-add-select-input">
+                    @error('name')
+                        <span class="message-err" style="color:red;">{{ $message }}</span>
+                    @enderror
                 </div>
-                <div class="form-group">
-                  <label for="input">Chọn trạng thái</label>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="status" id="input" value="1" checked="checked">
-                      Hiện
-                    </label>
-                    <label>
-                      <input type="radio" name="status" id="input" value="0">
-                      Ẩn
-                    </label>
+                <div class="body-box-add-select">
+                    <label style="font-size:15px ;" for="">Danh mục cha</label>
+                    <select class="form-control" name="category_id">             
+                      @foreach($category as $value)
+                      <option value="{{ $value->id }}">{{ $value->name }}</option>
+                      @endforeach                
+                    </select>
                   </div>
-                </div>
-              <div class="box-footer">
-                  <button type="submit" class="btn ">Thêm mới</button>
-                </div>
+                  <div class="form-group">
+                    <label for="input">Chọn trạng thái</label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="status" id="input" value="1" checked="checked">
+                        Hiện
+                      </label>
+                      <label>
+                        <input type="radio" name="status" id="input" value="0">
+                        Ẩn
+                      </label>
+                    </div>
+                  </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn ">Thêm mới</button>
+                  </div>
+
+              </form>
           </div>         
       </div>
   </div>

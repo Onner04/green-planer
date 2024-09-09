@@ -7,8 +7,19 @@
               <h2 class="child-header-content">Danh sách tất cả menu cha </h2>
           </div>
           <div class="child-box ">
+            <div class="content">
+                @if(Session::has('message'))
+                    <div class="alert alert-success">
+                          <button type="button" data-dismiss="alert" class="close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                            <strong>
+                              {{ Session::get('message') }}
+                            </strong>
+                    </div>
+                @endif
+            </div>
              <div class="child-box-header">
-             <a href="" class="child-box-header__add" >+ Thêm menu cha</a>
+             <a href="{{ route('category.add') }}" class="child-box-header__add" >+ Thêm menu cha</a>
 
                <div class="child-box-search">
                    <input type="text" placeholder="Search" >
@@ -28,40 +39,35 @@
                               <th>Link</th>
                               <th>Hành Động </th>
                           </tr>
+                          @foreach($category as $value) 
                           <tr>
-                            <td>1</td>
-                            <td><span class="table-news-name">cây</span></td>
+                            <td>{{$value->id}}</td>
+                            <td><span class="table-news-name">{{ $value->name }}</span></td>
                             <td>
-                         
-                            <span class="label label-success">Hiển thị</span>
-                         
-                            <span class="label label-danger">Đang ẩn</span>
-                          
+                              @if($value->status == 1)
+                              <span class="label label-success">Hiển thị</span>
+                              @else
+                              <span class="label label-danger">Đang ẩn</span>
+                              @endif
+                            
                             </td>
-                            <td><span class="table-news-category">Menu con</span></td>
-                            <td><span class="table-news-status">Link </span></td>
+                              <td>
+                              
+
+                                @foreach(isset($value->categoryChild) ? $value->categoryChild : [] as $values)
+          
+                                <p>{{$values->name}}</p>
+                                @endforeach
+
+                              </td>
+                              <td>{{ $value->link }}</td>
                             <td>
-                                    <a href="" class="table-repair">Sửa</a>
+                                    <a href="{{ route('category.update', $value->id) }}" class="table-repair">Sửa</a>
                                     <a href="" class="table-delete">Xóa</a>
                             </td>
                           </tr>                    
-                          <tr>
-                          <td>1</td>
-                            <td><span class="table-news-name">cây</span></td>
-                            <td>
-                         
-                            <span class="label label-success">Hiển thị</span>
-                         
-                            <span class="label label-danger">Đang ẩn</span>
-                          
-                            </td>
-                            <td><span class="table-news-category">Menu con</span></td>
-                            <td><span class="table-news-status">Link </span></td>
-                            <td>
-                                    <a href="" class="table-repair">Sửa</a>
-                                    <a href="" class="table-delete">Xóa</a>
-                            </td>
-                          </tr>                    
+                          @endforeach
+                             
                       </tbody>
                   </table>
               </div>

@@ -9,7 +9,7 @@
                        </div>
                        <div class="slide-move__item">
                           <a href="" class="slide-move__item-link">
-                                <img class="slide-move__item-img" src="<?php echo e(url('fontend')); ?>/img/4.jpg"alt="">
+                                <img class="slide-move__item-img" src="<?php echo e(url('fontend')); ?>/img/banner-4.jpg"alt="">
                           </a>
                       </div>
                       <div class="slide-move__item">

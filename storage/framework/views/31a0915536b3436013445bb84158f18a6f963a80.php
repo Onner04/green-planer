@@ -12,7 +12,8 @@
                                 <div class="box-select">
         
                                     <div class="nav-bar-list-child__content-icon">
-                                        <i class="fa-solid fa-folder-open child__content-icon-img"></i>
+                                    
+                                        <i class="fa-solid fa-tree child__content-icon-img"></i>
                                     </div>
                                     <a href="#" class="nav-bar-list-child__content-title">Quản lý sản phẩm</a>
                                 </div>
@@ -22,7 +23,7 @@
                             </div>
                             <ul class="nav-bar-list-child__content-box">
                                 <li class="menu-list">
-                                   <a href="<?php echo e(route('product.home')); ?>">Tất cả sản phẩm</a>
+                                   <a href="<?php echo e(route('product.index')); ?>">Tất cả sản phẩm</a>
                                 </li>
                                 <li class="menu-list">
                                     <a href="<?php echo e(route('add.product')); ?>">Thêm sản phẩm</a>
@@ -34,7 +35,8 @@
                                 <div class="box-select">
         
                                     <div class="nav-bar-list-child__content-icon">
-                                        <i class="fa-solid fa-folder-open child__content-icon-img"></i>
+                                    
+                                        <i class="fa-solid fa-list child__content-icon-img"></i>
                                     </div>
                                     <a href="#" class="nav-bar-list-child__content-title">Quản lý menu</a>
                                 </div>
@@ -44,10 +46,10 @@
                             </div>
                             <ul class="nav-bar-list-child__content-box">
                                 <li class="menu-list">
-                                   <a href="">menu cha</a>
+                                   <a href="<?php echo e(route('category.index')); ?>">menu cha</a>
                                 </li>
                                 <li class="menu-list">
-                                    <a href="">menu con</a>
+                                    <a href="<?php echo e(route('category-child.home')); ?>">menu con</a>
                                 </li>
                             </ul>
                         </li>
@@ -56,9 +58,10 @@
                                 <div class="box-select">
         
                                     <div class="nav-bar-list-child__content-icon">
-                                        <i class="fa-solid fa-folder-open child__content-icon-img"></i>
+                                    
+                                        <i class="fa-solid fa-image child__content-icon-img"></i>
                                     </div>
-                                    <a href="#" class="nav-bar-list-child__content-title">Quản lý banner</a>
+                                    <a href="<?php echo e(route('banner.home')); ?>" class="nav-bar-list-child__content-title">Quản lý banner</a>
                                 </div>
                                 
                             </div>
@@ -69,7 +72,8 @@
                                 <div class="box-select">
         
                                     <div class="nav-bar-list-child__content-icon">
-                                        <i class="fa-solid fa-folder-open child__content-icon-img"></i>
+                                  
+                                        <i class="fa-solid fa-palette child__content-icon-img"></i>
                                     </div>
                                     <a href="#" class="nav-bar-list-child__content-title">Quản lý thuộc tính</a>
                                 </div>
@@ -79,10 +83,10 @@
                             </div>
                             <ul class="nav-bar-list-child__content-box">
                                 <li class="menu-list">
-                                   <a href="">Tất cả thuộc tính</a>
+                                   <a href="<?php echo e(route('attr.home')); ?>">Tất cả thuộc tính</a>
                                 </li>
                                 <li class="menu-list">
-                                    <a href="">Thêm thuộc tính</a>
+                                    <a href="<?php echo e(route('attr.add')); ?>">Thêm thuộc tính</a>
                                 </li>
                             </ul>
                         </li>
@@ -90,9 +94,10 @@
                         <li class="nav-bar-list-child nav-list-child-select">
                             <div class="nav-bar-list-child__content ">
                                 <div class="nav-bar-list-child__content-icon">
-                                    <i class="fa-solid fa-folder-open child__content-icon-img"></i>
+                                
+                                    <i class="fa-solid fa-cart-shopping child__content-icon-img"></i>
                                 </div>
-                                <a href="#" class="nav-bar-list-child__content-title">Quản lý đơn hàng</a>
+                                <a href="<?php echo e(route('order.home')); ?>" class="nav-bar-list-child__content-title">Quản lý đơn hàng</a>
                             </div>
                            
                         </li>

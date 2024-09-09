@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\banner;
 
 use App\Http\Controllers\Controller;
+use App\Models\banners;
 use App\Models\view;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        return view('admin.banner.index');
+        $banner = banners::all();
+        return view('admin.banner.index',compact('banner'));
     }
 
     /**

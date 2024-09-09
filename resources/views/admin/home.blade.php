@@ -8,21 +8,24 @@
                             <p class="container-home-data__box-item-title">Đơn đặt hàng</p>
                             <p class="container-home-data__box-item-core">84</p>
                         </div>
-                        <i class="fa-solid fa-layer-group container-home-data__box-item-icon"></i>
+                       
+                        <i class="fa-solid  fa-bag-shopping container-home-data__box-item-icon"></i>
                     </div>
                     <div class="container-home-data__box">
                         <div class="container-home-data__box-item">
                             <p class="container-home-data__box-item-title">Doanh Thu</p>
                             <p class="container-home-data__box-item-core">$72,00</p>
                         </div>
-                        <i class="fa-solid fa-layer-group container-home-data__box-item-icon"></i>
+                        
+                        <i class="fa-brands fa-shopify container-home-data__box-item-icon"></i>
                     </div>
                     <div class="container-home-data__box">
                         <div class="container-home-data__box-item">
                             <p class="container-home-data__box-item-title">Lượt truy cập</p>
                             <p class="container-home-data__box-item-core">72</p>
                         </div>
-                        <i class="fa-solid fa-layer-group container-home-data__box-item-icon"></i>
+                       
+                        <i class="fa-solid fa-eye container-home-data__box-item-icon"></i>
                     </div>
                 </div>
 

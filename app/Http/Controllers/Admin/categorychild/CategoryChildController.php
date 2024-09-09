@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin\categorychild;
 
 use App\Http\Controllers\Controller;
+use App\Models\categories;
+use App\Models\categoryChilds;
 use App\Models\view;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,14 @@ class CategoryChildController extends Controller
      */
     public function index()
     {
-        return view('admin.category-child.index');
+        $categoryChild = categoryChilds::all();
+        
+        return view('admin.category-child.index',compact('categoryChild'));
+    }
+    public function add()
+    {
+        $category = categories::all();
+        return view('admin.category-child.add',compact('category'));
     }
 
     /**
@@ -23,9 +32,23 @@ class CategoryChildController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $req)
     {
-        //
+        $this->validate($req,[
+            'name'  =>'required|unique:category_childs|max:100'
+       ],
+       [
+            'name.required' =>'Bạn chưa nhập trường này ',
+            'name.unique' => 'Tên danh mục đã tồn tại !',
+            'name.max'  => 'tên quá dài '
+       ]);
+
+       $categoryChild  = categoryChilds::create($req->all());
+
+       if($categoryChild)
+       {
+            return redirect()->route('category-child.home')->with('message','thêm thành công');
+       }
     }
 
     /**

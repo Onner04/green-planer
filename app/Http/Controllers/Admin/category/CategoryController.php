@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin\category;
 
 use App\Http\Controllers\Controller;
+use App\Models\categories;
+use App\Models\view;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +16,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $category = categories::all();
+        return view('admin.category.index',compact('category'));
+    }
+
+    public function add(){
+        return view('admin.category.add');
     }
 
     /**
@@ -22,9 +29,20 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $req)
     {
-        //
+        $this->validate($req,[
+            'name'  =>'required|unique:categories|max:100'
+       ],
+       [
+            'name.required' =>'Bạn chưa nhập trường này ',
+            'name.unique' => 'Tên danh mục đã tồn tại !',
+            'name.max'  => 'tên quá dài '
+       ]);
+       $category = categories::create($req->all());
+       if($category)  {
+        return redirect()->route('category.index')->with('message', 'thêm thành công');
+       }
     }
 
     /**

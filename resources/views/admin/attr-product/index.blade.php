@@ -7,6 +7,17 @@
               <h2 class="child-header-content">Danh sách thuộc tính chiều cao</h2>
           </div>
           <div class="child-box ">
+              <div class="content">
+              @if(Session::has('message'))
+                    <div class="alert alert-success">
+                          <button type="button" data-dismiss="alert" class="close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                            <strong>
+                              {{ Session::get('message') }}
+                            </strong>
+                    </div>
+                @endif
+              </div>
              <div class="child-box-header">
              <a href="" class="child-box-header__add" >+ Thêm mới</a>
 
@@ -22,25 +33,22 @@
                       <tbody>
                           <tr class="table-news">
                               <th>STT</th>
+                              <th>Tên</th>
                               <th>Giá trị</th>
                               <th>Hành Động </th>
                           </tr>
-                          <tr>
-                            <td>1</td>
-                            <td><span class="table-news-name">cây mk01</span></td>
-                            <td>
-                                    <a href="" class="table-repair">Sửa</a>
-                                    <a href="" class="table-delete">Xóa</a>
-                            </td>
-                          </tr>                    
-                          <tr>
-                            <td>1</td>
-                            <td><span class="table-news-name">cây mk01</span></td>
-                            <td>
-                                    <a href="" class="table-repair">Sửa</a>
-                                    <a href="" class="table-delete">Xóa</a>
-                            </td>
-                          </tr>                    
+                          @foreach($attr as $value)
+                            <tr>
+                              <td>{{$value->id}}</td>
+                              <td><span class="table-news-name">{{ $value->name }}</span></td>
+                              <td><span class="table-news-name">{{ $value->value }}</span></td>
+                              <td>
+                                      <a href="{{ route('attr.update') }}" class="table-repair">Sửa</a>
+                                      <a href="" class="table-delete">Xóa</a>
+                              </td>
+                            </tr>  
+                          @endforeach                  
+                                             
                       </tbody>
                   </table>
               </div>

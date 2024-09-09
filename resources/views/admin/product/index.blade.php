@@ -6,7 +6,21 @@
           <div class="child-header">
               <h2 class="child-header-content">Danh sách tất cả sản phẩm </h2>
           </div>
+
+
           <div class="child-box ">
+              <div class="content">
+              @if(Session::has('message'))
+                    <div class="alert alert-success">
+                         
+                            <span aria-hidden="true">&times;</span></button>
+                            <strong>
+                              {{ Session::get('message') }}
+                            </strong>
+                    </div>
+                @endif
+              </div>
+
              <div class="child-box-header">
              <a href="" class="child-box-header__add" >+ Thêm sản phẩm</a>
 
@@ -19,7 +33,7 @@
 
               <div class="child-box-body">
                   <table class="table">
-                      <tbody>
+                      <thead>
                           <tr class="table-news">
                               <th>STT</th>
                               <th>Tên sản phẩm</th>
@@ -31,47 +45,32 @@
                               <th>Trạng Thái</th>
                               <th>Hành Động </th>
                           </tr>
+                      </thead>
+                        <tbody>
+                          @foreach($product as $value)
                           <tr>
-                            <td>1</td>
-                            <td><span class="table-news-name">cây mk01</span></td>
-                            <td><img class="table-news-title"></img></td>
-                            <td><span class="table-news-category">200</span></td>
-                            <td><span>599.000đ</span></td>
-                            <td><span class="table-news-status">399.000đ </span></td>
-                            <td><span class="table-news-status">cây trong nhà</span></td>
-                            <td>
-                         
-                            <span class="label label-success">Hiển thị</span>
-                         
-                            <span class="label label-danger">Đang ẩn</span>
+                              <td>{{ $value->id}}</td>
+                              <td><span class="table-news-name">{{ $value->name }}</span></td>
+                              <td><img src="{{url('images')}}/{{ $value->image }}" style="width:60px" class="table-news-title"></img></td>
+                              <td><span class="table-news-category">{{ $value->quantity }}</span></td>
+                              <td><span>{{ number_format($value->price,0,".",".") }}đ</span></td>
+                              <td><span class="table-news-status">{{ number_format($value->sale_price,0,".",".") }}đ</span></td>
+                              <td><span class="table-news-status">{{ $value->Category->name }}</span></td>
+                              <td>
+                                @if($value->status == 1)
+                                  <span class="label label-success">Hiển thị</span>
+                                @else
+                                  <span class="label label-danger">Đang ẩn</span>
+                                @endif
                           
-                            </td>
-                            <td>
-                                    <a href="{{ route('update.product') }}" class="table-repair">Sửa</a>
+                              </td>
+                              <td>
+                                    <a href="{{ route('update.product',$value->id) }}" class="table-repair">Sửa</a>
                                     <a href="" class="table-delete">Xóa</a>
-                            </td>
+                              </td>
                           </tr>                    
-                          <tr>
-                            <td>1</td>
-                            <td><span class="table-news-name">cây mk01</span></td>
-                            <td><img class="table-news-title"></img></td>
-                            <td><span class="table-news-category">200</span></td>
-                            <td><span>599.000đ</span></td>
-                            <td><span class="table-news-status">399.000đ </span></td>
-                            <td><span class="table-news-status">cây trong nhà</span></td>
-                            <td>
-                         
-                            <span class="label label-success">Hiển thị</span>
-                         
-                            <span class="label label-danger">Đang ẩn</span>
-                          
-                            </td>
-                            <td>
-                                    <a href="{{ route('update.product') }}" class="table-repair">Sửa</a>
-                                    <a href="" class="table-delete">Xóa</a>
-                            </td>
-                          </tr>                    
-                      </tbody>
+                          @endforeach           
+                        </tbody>
                   </table>
               </div>
           </div>

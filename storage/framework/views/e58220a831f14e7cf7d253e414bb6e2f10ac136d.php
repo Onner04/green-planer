@@ -6,7 +6,22 @@
           <div class="child-header">
               <h2 class="child-header-content">Danh sách tất cả sản phẩm </h2>
           </div>
+
+
           <div class="child-box ">
+              <div class="content">
+              <?php if(Session::has('message')): ?>
+                    <div class="alert alert-success">
+                         
+                            <span aria-hidden="true">&times;</span></button>
+                            <strong>
+                              <?php echo e(Session::get('message')); ?>
+
+                            </strong>
+                    </div>
+                <?php endif; ?>
+              </div>
+
              <div class="child-box-header">
              <a href="" class="child-box-header__add" >+ Thêm sản phẩm</a>
 
@@ -19,7 +34,7 @@
 
               <div class="child-box-body">
                   <table class="table">
-                      <tbody>
+                      <thead>
                           <tr class="table-news">
                               <th>STT</th>
                               <th>Tên sản phẩm</th>
@@ -31,47 +46,32 @@
                               <th>Trạng Thái</th>
                               <th>Hành Động </th>
                           </tr>
+                      </thead>
+                        <tbody>
+                          <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                           <tr>
-                            <td>1</td>
-                            <td><span class="table-news-name">cây mk01</span></td>
-                            <td><img class="table-news-title"></img></td>
-                            <td><span class="table-news-category">200</span></td>
-                            <td><span>599.000đ</span></td>
-                            <td><span class="table-news-status">399.000đ </span></td>
-                            <td><span class="table-news-status">cây trong nhà</span></td>
-                            <td>
-                         
-                            <span class="label label-success">Hiển thị</span>
-                         
-                            <span class="label label-danger">Đang ẩn</span>
+                              <td><?php echo e($value->id); ?></td>
+                              <td><span class="table-news-name"><?php echo e($value->name); ?></span></td>
+                              <td><img src="<?php echo e(url('images')); ?>/<?php echo e($value->image); ?>" style="width:60px" class="table-news-title"></img></td>
+                              <td><span class="table-news-category"><?php echo e($value->quantity); ?></span></td>
+                              <td><span><?php echo e(number_format($value->price,0,".",".")); ?>đ</span></td>
+                              <td><span class="table-news-status"><?php echo e(number_format($value->sale_price,0,".",".")); ?>đ</span></td>
+                              <td><span class="table-news-status"><?php echo e($value->Category->name); ?></span></td>
+                              <td>
+                                <?php if($value->status == 1): ?>
+                                  <span class="label label-success">Hiển thị</span>
+                                <?php else: ?>
+                                  <span class="label label-danger">Đang ẩn</span>
+                                <?php endif; ?>
                           
-                            </td>
-                            <td>
-                                    <a href="<?php echo e(route('update.product')); ?>" class="table-repair">Sửa</a>
+                              </td>
+                              <td>
+                                    <a href="<?php echo e(route('update.product',$value->id)); ?>" class="table-repair">Sửa</a>
                                     <a href="" class="table-delete">Xóa</a>
-                            </td>
+                              </td>
                           </tr>                    
-                          <tr>
-                            <td>1</td>
-                            <td><span class="table-news-name">cây mk01</span></td>
-                            <td><img class="table-news-title"></img></td>
-                            <td><span class="table-news-category">200</span></td>
-                            <td><span>599.000đ</span></td>
-                            <td><span class="table-news-status">399.000đ </span></td>
-                            <td><span class="table-news-status">cây trong nhà</span></td>
-                            <td>
-                         
-                            <span class="label label-success">Hiển thị</span>
-                         
-                            <span class="label label-danger">Đang ẩn</span>
-                          
-                            </td>
-                            <td>
-                                    <a href="<?php echo e(route('update.product')); ?>" class="table-repair">Sửa</a>
-                                    <a href="" class="table-delete">Xóa</a>
-                            </td>
-                          </tr>                    
-                      </tbody>
+                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>           
+                        </tbody>
                   </table>
               </div>
           </div>
