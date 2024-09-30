@@ -42,7 +42,7 @@
                           </tr>
                           <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
                           <tr>
-                            <td><?php echo e($value->id); ?></td>
+                            <td><?php echo e($loop->iteration); ?></td>
                             <td><span class="table-news-name"><?php echo e($value->name); ?></span></td>
                             <td>
                               <?php if($value->status == 1): ?>
@@ -63,8 +63,8 @@
                               </td>
                               <td><?php echo e($value->link); ?></td>
                             <td>
-                                    <a href="<?php echo e(route('category.update', $value->id)); ?>" class="table-repair">Sửa</a>
-                                    <a href="" class="table-delete">Xóa</a>
+                                    <a href="<?php echo e(route('category.edit', $value->id)); ?>" class="table-repair">Sửa</a>
+                                    <a href="<?php echo e(route('category.delete', $value->id)); ?>" class="table-delete">Xóa</a>
                             </td>
                           </tr>                    
                           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

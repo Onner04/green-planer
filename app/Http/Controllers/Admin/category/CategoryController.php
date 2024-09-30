@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\categories;
 use App\Models\view;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -40,7 +41,8 @@ class CategoryController extends Controller
             'name.max'  => 'tên quá dài '
        ]);
        $category = categories::create($req->all());
-       if($category)  {
+       if($category)  
+       {
         return redirect()->route('category.index')->with('message', 'thêm thành công');
        }
     }
@@ -75,7 +77,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = categories::find($id);
+        return view('admin.category.update',compact('category'));
     }
 
     /**
@@ -87,7 +90,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = categories::find($id);
+       
+        $category = $category->update($request->all());
+        if($category)
+        {
+            return redirect()->route('category.index')->with('message','thay đổi thành công');
+        }
     }
 
     /**
@@ -99,5 +108,16 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function delete($id)
+    {
+        $idCate = DB::table('category_childs')->where('category_id',$id)->pluck('id')->toArray();
+        $delete = DB::table('products')->where('category_id',$idCate)->delete();
+        $categoryChild = DB::table('category_childs')->where('category_id',$id)->delete();
+        $cate = categories::find($id);
+        $cate->delete() ;
+
+        return redirect()->route('category.index')->with('message','xóa thành công');
     }
 }

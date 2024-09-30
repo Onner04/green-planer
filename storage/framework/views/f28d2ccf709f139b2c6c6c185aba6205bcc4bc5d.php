@@ -16,6 +16,7 @@
                                 <?php echo e(Session::get('message')); ?>
 
                               </strong>
+                              
                       </div>
                   <?php endif; ?>
               </div>
@@ -41,7 +42,7 @@
                           </tr>
                           <?php $__currentLoopData = $categoryChild; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                              <td><?php echo e($value->id); ?></td>
+                              <td><?php echo e($loop->iteration); ?></td>
                               <td><span class="table-news-name"><?php echo e($value->name); ?></span></td>
                               <td>                  
                                 <?php if($value->status == 1): ?>
@@ -52,8 +53,8 @@
                               </td>
                               <td><span class="table-news-category"><?php echo e($value->Category->name); ?></span></td>                  
                               <td>
-                                      <a href="<?php echo e(route('category-child-update')); ?>" class="table-repair">Sửa</a>
-                                      <a href="" class="table-delete">Xóa</a>
+                                      <a href="<?php echo e(route('category-child.edit', $value->id)); ?>" class="table-repair">Sửa</a>
+                                      <a href="<?php echo e(route('category-child.delete', $value->id)); ?>" class="table-delete">Xóa</a>
                               </td>
                             </tr>                    
                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>            

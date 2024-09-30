@@ -9,13 +9,17 @@
               <div class="body-add-box-content">
                   <h3 class="box-content-title">Thêm mới thuộc tính</h3>
               </div>
-              <div class="body-box-add-select">
-                  <p class="box-add-select-title">chiều cao</p>
-                  <input type="text" placeholder="Nhập chiều cao" class="box-add-select-input">
-              </div>
-              <div class="box-footer">
-                  <button type="submit" class="btn ">Thêm mới</button>
-                </div>
+              <form action="" method="POST">
+                @csrf
+                  
+                  <div class="body-box-add-select">
+                      <p class="box-add-select-title">chiều cao</p>
+                      <input type="text" name="height" value="{{ $attr->value}}" placeholder="Nhập chiều cao" class="box-add-select-input">
+                  </div>
+                  <div class="box-footer">
+                      <button type="submit" class="btn ">Thêm mới</button>
+                    </div>
+              </form>
           </div>         
       </div>
   </div>

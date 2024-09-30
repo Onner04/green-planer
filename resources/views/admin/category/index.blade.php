@@ -41,7 +41,7 @@
                           </tr>
                           @foreach($category as $value) 
                           <tr>
-                            <td>{{$value->id}}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td><span class="table-news-name">{{ $value->name }}</span></td>
                             <td>
                               @if($value->status == 1)
@@ -62,8 +62,8 @@
                               </td>
                               <td>{{ $value->link }}</td>
                             <td>
-                                    <a href="{{ route('category.update', $value->id) }}" class="table-repair">Sửa</a>
-                                    <a href="" class="table-delete">Xóa</a>
+                                    <a href="{{ route('category.edit', $value->id) }}" class="table-repair">Sửa</a>
+                                    <a href="{{ route('category.delete', $value->id) }}" class="table-delete">Xóa</a>
                             </td>
                           </tr>                    
                           @endforeach

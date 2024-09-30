@@ -15,6 +15,7 @@
                               <strong>
                                 {{ Session::get('message') }}
                               </strong>
+                              
                       </div>
                   @endif
               </div>
@@ -40,7 +41,7 @@
                           </tr>
                           @foreach($categoryChild as $value)
                             <tr>
-                              <td>{{$value->id}}</td>
+                              <td>{{ $loop->iteration }}</td>
                               <td><span class="table-news-name">{{$value->name}}</span></td>
                               <td>                  
                                 @if($value->status == 1)
@@ -51,8 +52,8 @@
                               </td>
                               <td><span class="table-news-category">{{ $value->Category->name }}</span></td>                  
                               <td>
-                                      <a href="{{ route('category-child-update') }}" class="table-repair">Sửa</a>
-                                      <a href="" class="table-delete">Xóa</a>
+                                      <a href="{{ route('category-child.edit', $value->id) }}" class="table-repair">Sửa</a>
+                                      <a href="{{ route('category-child.delete', $value->id) }}" class="table-delete">Xóa</a>
                               </td>
                             </tr>                    
                            @endforeach            

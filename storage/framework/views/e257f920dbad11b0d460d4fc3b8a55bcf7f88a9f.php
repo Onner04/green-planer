@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?php echo e(asset('assest/css/admin.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assest/css/base.css')); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Green Planer</title>
 </head>
 <body>
     <div class="wrapper" style="background-color: rgb(238, 239, 240); height:100vh ;">
@@ -23,5 +23,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <?php echo $__env->yieldContent('tinymce'); ?>
+    <?php echo $__env->yieldContent('banner'); ?>
 </body>
 </html><?php /**PATH D:\code\laravel\Green-planer\resources\views/admin/master.blade.php ENDPATH**/ ?>

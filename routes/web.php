@@ -7,7 +7,10 @@ use App\Http\Controllers\Admin\category\CategoryController;
 use App\Http\Controllers\Admin\categorychild\CategoryChildController;
 use App\Http\Controllers\Admin\order\OrderController;
 use App\Http\Controllers\Admin\product\ProductController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController as ControllersOrderController;
+use App\Http\Controllers\OrderProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/admin',[AdminController::class,'home'])->name('admin.home');
 Route::get('login-admin',[AdminController::class,'login'])->name('login.admin');
+Route::post('login-admin',[AdminController::class,'login'])->name('login.admin');
 
 Route::prefix('admin')->group(function(){
     Route::get('/',[AdminController::class,'home'])->name('home');
@@ -29,11 +33,14 @@ Route::prefix('admin')->group(function(){
 
     // product
     Route::get('/product',[ProductController::class,'index'])->name('product.index');
-    // add product
-    Route::get('/product-add',[ProductController::class,'add'])->name('add.product');
+    // add-product
+    Route::get('/product-add',[ProductController::class,'add'])->name('product.add');
     Route::post('/product-add',[ProductController::class,'create'])->name('create.product');
-    // update product
-    Route::get('/product-update',[ProductController::class,'update'])->name('update.product');
+    // update-product
+    Route::get('/product-update/{id}',[ProductController::class,'edit'])->name('edit.product');
+    Route::post('product-update/{id}',[ProductController::class,'update'])->name('update.product');
+    // delete-product
+    Route::get('/product-delete/{id}',[ProductController::class,'delete'])->name('delete.product');
 
 
     // menu
@@ -42,7 +49,10 @@ Route::prefix('admin')->group(function(){
     Route::get('/category-add',[CategoryController::class,'add'])->name('category.add');
     Route::post('/category-add',[CategoryController::class,'create'])->name('create.category');
     // update-category
-    Route::get('/category-update',[CategoryController::class,'update'])->name('category.update');
+    Route::get('/category-update/{id}',[CategoryController::class,'edit'])->name('category.edit');
+    Route::post('/category-update/{id}',[CategoryController::class,'update'])->name('category.update');
+    // delete-category
+    Route::get('/category-delete/{id}',[CategoryController::class,'delete'])->name('category.delete');
 
 
     // menu con
@@ -51,31 +61,53 @@ Route::prefix('admin')->group(function(){
     Route::get('/category-child-add',[CategoryChildController::class,'add'])->name('category-child.add');
     Route::post('/category-child-add',[CategoryChildController::class,'create'])->name('category-child.create');
     // update-category-child
-    Route::get('/category-child-update',[CategoryChildController::class,'update'])->name('category-child-update');
+    Route::get('/category-child-update/{id}',[CategoryChildController::class,'edit'])->name('category-child.edit');
+    Route::post('/category-child-update/{id}',[CategoryChildController::class,'update'])->name('category-child.update');
+    // delete-category-child
+    Route::get('/category-child-delete/{id}',[CategoryChildController::class,'delete'])->name('category-child.delete');
 
 
 
     // banner
     Route::get('/banner-home',[BannerController::class,'index'])->name('banner.home');
+    Route::post('/banner-home',[BannerController::class,'store'])->name('banner.add');
     // update-banner
-    Route::get('banner-update',[BannerController::class,'update'])->name('banner.update');
+    Route::get('banner-update',[BannerController::class,'edit'])->name('banner.edit');
+    Route::post('/banner-update',[BannerController::class,'update'])->name('banner.update');
+    // delete-banner
+    Route::get('/banner-delete/{id}',[BannerController::class,'delete'])->name('banner.delete');
 
 
     // attr-product
     Route::get('/attr-home',[AttrController::class,'index'])->name('attr.home');
     // add-attr-product
     Route::get('/attr-add',[AttrController::class,'add'])->name('attr.add');
+    Route::post('/attr-add',[AttrController::class,'store'])->name('attr.create');
     // update-attr-product
-    Route::get('/attr-update',[AttrController::class,'update'])->name('attr.update');
-
+    Route::get('/attr-update/{id}',[AttrController::class,'edit'])->name('attr.edit');
+    Route::post('/attr-update/{id}',[AttrController::class,'update'])->name('attr.update');
+    // delete-attr-product
+    Route::get('/attr-delete/{id}',[AttrController::class,'delete'])->name('attr.delete');
 
     // order
-    Route::get('/order-home',[OrderController::class,'index'])->name('order.home');
+   
+    Route::resource('order',OrderController::class);
 });
+
 
 
 Route::prefix('/')->group(function(){
     Route::get('/',[HomeController::class,'home'])->name('home');
+    //  product-detail
+    Route::get('product-detail/{id}',[HomeController::class,'product'])->name('product.detail');
 
-    Route::get('product-detail',[HomeController::class,'product'])->name('product.detail');
+    // cart
+    Route::get('product-cart',[CartController::class,'cart'])->name('product.cart');
+    Route::post('cart-add', [CartController::class,'add'])->name('cart.add');
+    Route::post('cart-update',[CartController::class,'update'])->name('cart.update');
+    Route::get('cart-delete/{id}',[CartController::class,'delete'])->name('cart.delete');
+
+    Route::get('product-order',[OrderProductController::class,'order'])->name('product.order');
+   
+
 });

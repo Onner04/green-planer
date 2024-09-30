@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\order;
 
 use App\Http\Controllers\Controller;
 use App\Models\order;
+use App\Models\orderDetail;
 use App\Models\view;
 use Illuminate\Http\Request;
 
@@ -73,7 +74,15 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = order::find($id);
+        $order->update([
+            'status' =>$request->status,
+        ]);
+
+        if($order)
+        {
+            return redirect()->route('order.index');
+        }
     }
 
     /**
@@ -84,6 +93,43 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        orderDetail::where('id_order', $id)->delete();
+
+       
+        $order = order::find($id);
+        
+       
+        if (!$order) {
+            return redirect()->route('order.index')->with('error', 'Đơn hàng không tồn tại');
+        }
+
+       
+        $order->delete();
+
+       
+        return redirect()->route('order.index')->with('message', 'Xóa thành công');
     }
+   
+    
+    public function delete($id)
+    {
+       
+        orderDetail::where('order_id', $id)->delete();
+
+       
+        $order = order::find($id);
+        dd($order);
+
+       
+        if (!$order) {
+            return redirect()->route('order.index')->with('error', 'Đơn hàng không tồn tại');
+        }
+
+       
+        $order->delete();
+
+       
+        return redirect()->route('order.index')->with('message', 'Xóa thành công');
+    }
+
 }

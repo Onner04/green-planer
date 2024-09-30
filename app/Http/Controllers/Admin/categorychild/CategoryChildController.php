@@ -7,6 +7,7 @@ use App\Models\categories;
 use App\Models\categoryChilds;
 use App\Models\view;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryChildController extends Controller
 {
@@ -81,7 +82,10 @@ class CategoryChildController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = categories::all();
+        $cateChild = categoryChilds::find($id);
+
+        return view('admin.category-child.update',compact('cateChild','category'));
     }
 
     /**
@@ -93,7 +97,13 @@ class CategoryChildController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categoryChild  = categoryChilds::find($id);
+        $categoryChild = $categoryChild->update($request->all());
+
+       if($categoryChild)
+       {
+            return redirect()->route('category-child.home')->with('message','thêm thành công');
+       }
     }
 
     /**
@@ -105,5 +115,14 @@ class CategoryChildController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function delete($id)
+    {
+        $delePro = DB::table('products')->where('category_id',$id)->delete();
+        $cate_child = categoryChilds::find($id);
+        $cate_child->delete();
+
+        return redirect()->route('category-child.home')->with('message','đã xóa thành công');
     }
 }

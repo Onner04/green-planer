@@ -26,7 +26,7 @@
                                    <a href="{{ route('product.index') }}">Tất cả sản phẩm</a>
                                 </li>
                                 <li class="menu-list">
-                                    <a href="{{ route('add.product') }}">Thêm sản phẩm</a>
+                                    <a href="{{ route('product.add') }}">Thêm sản phẩm</a>
                                 </li>
                             </ul>
                         </li>
@@ -97,7 +97,7 @@
                                 
                                     <i class="fa-solid fa-cart-shopping child__content-icon-img"></i>
                                 </div>
-                                <a href="{{ route('order.home') }}" class="nav-bar-list-child__content-title">Quản lý đơn hàng</a>
+                                <a href="{{ route('order.index') }}" class="nav-bar-list-child__content-title">Quản lý đơn hàng</a>
                             </div>
                            
                         </li>

@@ -19,7 +19,7 @@
                 @endif
               </div>
              <div class="child-box-header">
-             <a href="" class="child-box-header__add" >+ Thêm mới</a>
+             <a href="{{ route('attr.add') }}" class="child-box-header__add" >+ Thêm mới</a>
 
                <div class="child-box-search">
                    <input type="text" placeholder="Search" >
@@ -39,12 +39,12 @@
                           </tr>
                           @foreach($attr as $value)
                             <tr>
-                              <td>{{$value->id}}</td>
+                              <td>{{ $loop->iteration }}</td>
                               <td><span class="table-news-name">{{ $value->name }}</span></td>
                               <td><span class="table-news-name">{{ $value->value }}</span></td>
                               <td>
-                                      <a href="{{ route('attr.update') }}" class="table-repair">Sửa</a>
-                                      <a href="" class="table-delete">Xóa</a>
+                                      <a href="{{ route('attr.update',$value->id) }}" class="table-repair">Sửa</a>
+                                      <a href="{{ route('attr.delete',$value->id) }}" class="table-delete">Xóa</a>
                               </td>
                             </tr>  
                           @endforeach                  

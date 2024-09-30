@@ -45,7 +45,7 @@
                           </tr>
                           @foreach($order as $value)
                             <tr>
-                                <td>{{$value->id}}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td><span class="table-news-name">{{$value->name}}</span></td>
                                   <td>
                                     
@@ -64,7 +64,7 @@
                                 </td>
                                 <td><span class="table-news-category">{{ $value->phone }}</span></td>
                                 <td><span>{{ number_format($value->total_price,0,".",".") }}đ</span></td>
-                                <td class="table-news-add" style="width:10%;"><span >{{ $value->addrest }} </span></td>
+                                <td class="table-news-add" style="width:25%;"><span >{{ $value->addrest }} </span></td>
                                 <td><span class="table-news-status">{{ $value->note }}</span></td>
                                 <td><span class="table-news-status">{{ $value->created_at }}</span></td>
                                 <td>
@@ -75,11 +75,19 @@
                                   @endif
                               
                                 </td>
-                                <td>
-                                  <input type="hidden" name="status" value="2">
-                                  <button style="border:none;background: transparent;" type="submit" class="" title="Xác Nhận"><i style="color:#00a65a" class="fa fa-fw fa-check-circle"></i></button>
-                                  <input type="hidden" name="status" value="2">
-                                  <button style="border:none;background: transparent;" type="submit" onclick="return confirm('Bạn có muốn xóa đơn hàng này không?')" class="" title="Xóa"><i style="color: red;" class="fa-solid fa-trash"></i></button>            
+                                <td style="display: flex;">
+                                <form action="{{ route('order.update',$value->id) }}" method="post">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="status" value="2">
+                                    <button style="border:none;background: transparent;" type="submit" class="" title="Xác Nhận"><i style="color:#00a65a" class="fa fa-fw fa-check-circle"></i></button>
+                                </form>
+                                <form action="{{ route('order.destroy',$value->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" name="status" value="2">
+                                    <button style="border:none;background: transparent;" type="submit" onclick="return confirm('Bạn có muốn xóa đơn hàng này không?')" class="" title="Xóa"><i style="color:red" class="fa-solid fa-trash"></i></button>
+                                </form>
                                 </td>  
                               </tr>                    
                             @endforeach                 

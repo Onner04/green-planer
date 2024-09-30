@@ -9,13 +9,19 @@
               <div class="body-add-box-content">
                   <h3 class="box-content-title">Thêm mới thuộc tính</h3>
               </div>
-              <div class="body-box-add-select">
-                  <p class="box-add-select-title">chiều cao</p>
-                  <input type="text" placeholder="Nhập chiều cao" class="box-add-select-input">
-              </div>
-              <div class="box-footer">
-                  <button type="submit" class="btn ">Thêm mới</button>
+              <form action="{{ route('attr.create') }}" method="POST">
+                    @csrf
+                  <div class="body-box-add-select">
+                      <p class="box-add-select-title">chiều cao</p>
+                      <input type="text" value="{{old('value')}}" name="height" placeholder="Nhập chiều cao" class="box-add-select-input">
+                        @error('name')
+                            <span class="message-err" style="color:red;">{{ $message }}</span>
+                        @enderror
+                  </div>
+                  <div class="box-footer">
+                      <button type="submit" class="btn ">Thêm mới</button>
                 </div>
+              </form>
           </div>         
       </div>
   </div>

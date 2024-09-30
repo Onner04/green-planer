@@ -51,7 +51,7 @@
                         <span>chiều cao : </span>
                 
                         @foreach($attrSize as $value)
-                        <label for="">
+                        <label >
                         <input value="{{$value->id}}" name="attr[]" type="checkbox">{{ $value->value }}
 
                         </label>
@@ -69,7 +69,7 @@
                             <i class="fa fa-cloud-upload"></i>
                             Chọn ảnh
                         </label>
-                        <input id="file-upload" type="file" onchange="chooseFile(this)" name="file" class="form-control dn @error('image') is-invalid @enderror">
+                        <input id="file-upload" type="file" name="file" class="form-control dn @error('image') is-invalid @enderror">
 
                         @error('file')
                             <span class="message-err" style="color:red;">{{ $message }}</span>

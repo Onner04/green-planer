@@ -1,0 +1,152 @@
+/* Mobile & Table */
+@media (max-width: 1023px) {
+    .hide-on-mobile-table{
+        display: none;
+    }
+
+    li {
+        padding: 0;
+    }
+
+    .header {
+        background-color: var(--White-color);
+        padding: 0 16px;
+        box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+        height: var(--header-height-mobile-table);
+    }
+
+    .white-color{
+        animation: none;
+    }
+
+    .app__container {
+        margin-top: var(--header-height-mobile-table);
+    }
+    
+    .header-left{
+        display: flex;
+    }
+
+    .header-function{
+        margin-left: 0;
+    }
+    .header-logo{
+        text-align: center;
+    }
+    .header-logo-img {
+        width: 25%;
+    }
+    .box-search.active {
+        display: block;
+    }
+
+    .box-search .header-search__form-input{
+        background-color: #fff;
+    }
+
+    .nav-mobile-item{
+        display: block !important;
+    }
+
+    .img-select{
+        width: 20%;
+    }
+
+    .img-display {
+        width: 80%;
+    }
+ 
+
+}
+
+/* Table */
+@media (min-width: 740px) and (max-width: 1023px) {
+    .hide-on-table {
+        display: none;
+    }
+
+    .box-search{
+        width: 400px;
+    }
+
+    .img-select {
+        max-height: 920px;
+    }
+
+    .product-imgs {
+        display: flex;
+    }
+
+    .slideshow-container{
+        padding: 0 14px;
+    }
+
+    .product-content{
+        padding: 2rem 1.4rem;
+    }
+
+    .breadcrumb-arrows {
+        padding: 0;
+        margin: 0;
+    }
+
+    .no-margin{
+        margin: 0 14px !important;
+    }
+    .header-logo-img {
+        width: 12%;
+    }
+
+    
+}
+
+/* Mobile */
+@media (max-width: 739px) {
+    .hide-on-mobile{
+        display: none;
+    }
+
+    .product-item{
+        padding: 1px;
+    }
+
+    .product-heading__subtitle{
+        max-width: 250px;
+    }
+
+    .products{
+        margin: 0 8px;
+    }
+
+    .product:hover .product-item__btn {
+        display: none;
+    }
+
+    .footer{
+        padding: 0 8px;
+    }
+
+    .img-select{
+        max-height: 450px;
+    }
+
+    .product-title {
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+
+    .product-content {
+        padding: 1rem 1.4rem;
+    }
+
+    .slideshow-container{
+        padding: 0 14px;
+        width: 100%;
+    }
+
+    .mySlides.fade {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+}

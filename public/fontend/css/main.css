@@ -14,7 +14,6 @@
  .header:hover{
      background-color:var(--White-color);
      box-shadow: 0 0 10px rgb(0 0 0 / 20%);
-     
  }
  
  .header-menu-mobile{
@@ -36,6 +35,9 @@
  .header-left{
      display: none;
      align-items: center;
+ }
+ .header-menu{
+    margin-right: 10%;
  }
  
  
@@ -140,6 +142,8 @@
      transform: rotate(180deg);
  }
  
+
+ 
  .sb-caret {
      position: absolute;
      top: calc( 50% - 7px);
@@ -206,17 +210,13 @@
      font-size: 3rem;
      color: var(--Black-color);
  }
+ .header-logo-img{
+    width: 15%;
+    border-radius: 50%;
+ }
  
  .header-logo__link-title{
      margin: 0;
- }
- .header-logo{
-    width: 20%;
- }
- .header-logo-img{
-    width: 25%;
-    border-radius: 50%;
-    margin-left: 10%;
  }
  
  .header-menu-list{
@@ -303,14 +303,26 @@
      
  }
  
- .header-search__form-btn{
+ .header-search__form-btn {
      cursor: pointer;
      position: absolute;
-     top: 3%;
+     top: 7%;
      right: 4px;
      font-size: 1.4rem;
      padding: 10px 10px;
      color: var(--text-color);
+     border: none;
+     background: transparent;
+ }
+ 
+ .keyword {
+     margin-top: var(--header-height);
+ }
+ 
+ .keyword_name {
+     text-align: center;
+     border-top: 1px solid;
+     padding-top: 30px;
  }
  
  .header-function{
@@ -328,7 +340,25 @@
  .header-user__link{
      color: var(--text-color);
      text-decoration: none;
+     position: relative;
  }
+ 
+ .header-user__link i {
+     font-size: 2rem;
+ }
+
+ .noti_cart-quantity {
+    position: absolute;
+    top: -16px;
+    left: 21px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    padding: 0px 5px;
+    border: 1px solid #000;
+    font-weight: 600;
+}
+ 
+ 
  
  .header-function-sub:hover{
      opacity: 0.6;
@@ -344,6 +374,7 @@
      padding-right: 0;
      border: none;
  }
+ 
  
  
  /* Slider */
@@ -761,6 +792,10 @@
 }
 .product-item-detail-list__child{
     list-style: none;
+    width: 30%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 .product-item-detail-list__child-img{
     width: 85%;
@@ -789,12 +824,15 @@
 .last-price span {
     font-weight: 0 !important;
     color: #f10e0e;
+    text-decoration: line-through;
+    padding: 0 10px;
 }
 .new-price{
     margin-top: 10px;
 }
 .new-price span{
     color: rgb(0, 115, 255);
+    padding: 0 10px;
 }
 .form{
     margin-top: 30px;

@@ -46,7 +46,7 @@
                           </tr>
                           <?php $__currentLoopData = $order; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td><?php echo e($value->id); ?></td>
+                                <td><?php echo e($loop->iteration); ?></td>
                                 <td><span class="table-news-name"><?php echo e($value->name); ?></span></td>
                                   <td>
                                     
@@ -66,7 +66,7 @@
                                 </td>
                                 <td><span class="table-news-category"><?php echo e($value->phone); ?></span></td>
                                 <td><span><?php echo e(number_format($value->total_price,0,".",".")); ?>đ</span></td>
-                                <td class="table-news-add" style="width:10%;"><span ><?php echo e($value->addrest); ?> </span></td>
+                                <td class="table-news-add" style="width:25%;"><span ><?php echo e($value->addrest); ?> </span></td>
                                 <td><span class="table-news-status"><?php echo e($value->note); ?></span></td>
                                 <td><span class="table-news-status"><?php echo e($value->created_at); ?></span></td>
                                 <td>
@@ -77,11 +77,19 @@
                                   <?php endif; ?>
                               
                                 </td>
-                                <td>
-                                  <input type="hidden" name="status" value="2">
-                                  <button style="border:none;background: transparent;" type="submit" class="" title="Xác Nhận"><i style="color:#00a65a" class="fa fa-fw fa-check-circle"></i></button>
-                                  <input type="hidden" name="status" value="2">
-                                  <button style="border:none;background: transparent;" type="submit" onclick="return confirm('Bạn có muốn xóa đơn hàng này không?')" class="" title="Xóa"><i style="color: red;" class="fa-solid fa-trash"></i></button>            
+                                <td style="display: flex;">
+                                <form action="<?php echo e(route('order.update',$value->id)); ?>" method="post">
+                                    <?php echo csrf_field(); ?>
+                                    <?php echo method_field('PUT'); ?>
+                                    <input type="hidden" name="status" value="2">
+                                    <button style="border:none;background: transparent;" type="submit" class="" title="Xác Nhận"><i style="color:#00a65a" class="fa fa-fw fa-check-circle"></i></button>
+                                </form>
+                                <form action="<?php echo e(route('order.destroy',$value->id)); ?>" method="post">
+                                    <?php echo csrf_field(); ?>
+                                    <?php echo method_field('DELETE'); ?>
+                                    <input type="hidden" name="status" value="2">
+                                    <button style="border:none;background: transparent;" type="submit" onclick="return confirm('Bạn có muốn xóa đơn hàng này không?')" class="" title="Xóa"><i style="color:red" class="fa-solid fa-trash"></i></button>
+                                </form>
                                 </td>  
                               </tr>                    
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                 

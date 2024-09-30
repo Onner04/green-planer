@@ -9,40 +9,20 @@
     <title>Document</title>
 </head>
 <body>
-<div class="body">
-        <div class="title">Admin</div>
-        <div class="box">
-            <div class="box-title">
-                <h3 class="box-title-content">Đăng nhập để quản trị trang web</h3>
-            </div>
-            <form action="" method="post">
+<div class="wrapper">
+            <form action="" method="POST">
                 <?php echo csrf_field(); ?>
-                <div class="box-input">
-                    <input type="email" placeholder="tài khoản" class="box-input-select" name="email" value="<?php echo e(old('email')); ?>">
-                    <i class="fa-solid fa-envelope box-input-icon"></i>
+                <h1>Login admin</h1>
+                <div class="input-box">
+                    <input type="text" placeholder="Tài khoản">
+                    <i class='bx bxs-user'></i>
                 </div>
-                <div class="box-input">
-                    <input type="password" placeholder="mật khẩu" class="box-input-select" name="password" value="{{'password'}">
-                    <i class="fa-solid fa-unlock-keyhole box-input-icon"></i>
+                <div class="input-box">
+                    <input type="password" placeholder="Mật khẩu">
+                    <i class='bx bxs-lock-alt'></i>
                 </div>
-    
-                <div class="box-check">   
-                    <input type="checkbox">
-                    <span class="box-check-click-content">Nhớ mật khẩu</span>
-                </div>
-
+                <button type="submit" class="btn">Đăng nhập</button>
             </form>
-
-            <div class="box-select">
-                <div class="box-select-create">
-                    <button>Tạo tài khoản</button>
-                </div>
-                <div class="box-select-create" >
-                    <button >Đăng nhập</button>
-                </div>
-            </div>
-
         </div>
-    </div>
 </body>
 </html><?php /**PATH D:\code\laravel\Green-planer\resources\views/admin/login.blade.php ENDPATH**/ ?>

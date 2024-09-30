@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url('fontend')}}/css/main.css">
+    <link rel="stylesheet" href="{{ url('fontend')}}/css/responsive.css">
     <link rel="stylesheet" href="{{ url('fontend')}}/css/base.css">
+    @yield('style')
+    <link rel="shortcut icon" type="image/png" href="{{ url('assest') }}/img/logo.jpg"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Green Planer</title>
 </head>
 <body>
     <div id="app">
@@ -29,63 +32,11 @@
                         </h4>
                     </div>
                     <ul class="nav-mobile-list">
+                    @foreach(isset($value->categoryChild) ? $value->categoryChild : [] as $child)
                         <li class="nav-mobile-item">
-                            <a href="" class="nav-mobile-item__link">HOME</a>
+                            <a href="#" class="nav-mobile-item__link">{{ $child->name }}</a>
                         </li>
-                        <li class="nav-mobile-item ">
-                            <a href="#" class="nav-mobile-item__link">
-                                SIÊU SALE THÁNG 8
-                                
-                                <i class="fa-regular fa-circle-down sb-caret"></i>
-                            </a>
-
-                            <ul class="nav-mobile__child">
-                                <li class="nav-mobile__child-item ">
-                                    <a href="" class="nav-mobile_ _child-item-link">599k</a>
-                                </li> 
-                                <li class="nav-mobile__child-item ">
-                                    <a href="" class="nav-mobile_ _child-item-link">999k</a>
-                                </li> 
-                            </ul>
-                        </li>
-                        <li class="nav-mobile-item ">
-                            <a href="#" class="nav-mobile-item__link">
-                                BỘ SƯU TẬP
-                                
-                                <i class="fa-regular fa-circle-down sb-caret"></i>
-                            </a>
-
-                            <ul class="nav-mobile__child">
-                                <li class="nav-mobile__child-item ">
-                                    <a href="" class="nav-mobile_ _child-item-link">cây trong nhà</a>
-                                </li> 
-                                <li class="nav-mobile__child-item ">
-                                    <a href="" class="nav-mobile_ _child-item-link">cây ngoài trời</a>
-                                </li> 
-                            </ul>
-                        </li>
-                        <li class="nav-mobile-item ">
-                            <a href="#" class="nav-mobile-item__link">
-                                PHỤ KIỆN 
-                                
-                                <i class="fa-regular fa-circle-down sb-caret"></i>
-                            </a>
-
-                            <ul class="nav-mobile__child">
-                                <li class="nav-mobile__child-item ">
-                                    <a href="" class="nav-mobile_ _child-item-link">Trang trí</a>
-                                </li> 
-                                <li class="nav-mobile__child-item ">
-                                    <a href="" class="nav-mobile_ _child-item-link">Chậu cây</a>
-                                </li> 
-                            </ul>
-                        </li>
-                        <li class="nav-mobile-item">
-                            <a href="" class="nav-mobile-item__link">ALBUM</a>
-                        </li>
-                        <li class="nav-mobile-item">
-                            <a href="" class="nav-mobile-item__link">TIN TỨC</a>
-                        </li>
+                        @endforeach
                         
                     </ul>
                     <div class="nav-close">
@@ -108,53 +59,19 @@
             </div>
             <div class="header-menu  hide-on-mobile-table">
                 <ul class="header-menu-list">
-                    <li class="header-menu__item">
-                        <a href="" class="header-menu__item-link">Home</a>
-                    </li>
-                    <li class="header-menu__item">
-                        <a href="#" class="header-menu__item-link">SIÊU SALE THÁNG 8</a>
-                        <ul class="header-menu__child">
-                            
-                                <li class="header-menu__child-item">
-                                    <a href="" class="header-menu__child-item-link">sale 599k</a>
-                                </li>
-                                <li class="header-menu__child-item">
-                                    <a href="" class="header-menu__child-item-link">sale 799k</a>
-                                </li>
-                                <li class="header-menu__child-item">
-                                    <a href="" class="header-menu__child-item-link">sale 1199k</a>
-                                </li>
-                        </ul>
+                    @foreach(isset($category) ? $category : [] as $value)
+            
+                        <li class="header-menu__item">
+                            <a href="{{ $value->link }}" class="header-menu__item-link">{{ $value->name }}</a>
+                            <ul class="header-menu__child">
+                            @foreach(isset($value->categoryChild) ? $value->categoryChild : [] as $child)
+                                    <li class="header-menu__child-item">
+                                        <a href="" class="header-menu__child-item-link">{{ $child->name }}</a>
+                                    </li>
+                                @endforeach    
+                            </ul>
                         </li>
-                    <li class="header-menu__item">
-                        <a href="" class="header-menu__item-link header-menu__item-link-access">BỘ SƯU TẬP</a>
-                        <ul class="header-menu__child">
-                                <li class="header-menu__child-item">
-                                    <a href="" class="header-menu__child-item-link">Cây trong nhà</a>
-                                </li>
-                                <li class="header-menu__child-item">
-                                    <a href="" class="header-menu__child-item-link">Cây ngoài trời</a>
-                                </li>
-                        </ul>
-                        </li>
-                    <li class="header-menu__item">
-                        <a href="" class="header-menu__item-link header-menu__item-link-access">PHỤ KIỆN</a>
-                        <ul class="header-menu__child">
-                                <li class="header-menu__child-item">
-                                    <a href="" class="header-menu__child-item-link">Trang trí</a>
-                                </li>
-                                <li class="header-menu__child-item">
-                                    <a href="" class="header-menu__child-item-link">Chậu cây</a>
-                                </li>
-                        </ul>
-                        </li>
-                    
-                    <li class="header-menu__item">
-                        <a href="" class="header-menu__item-link">ALBUM</a>
-                        </li>
-                    <li class="header-menu__item">
-                        <a href="" class="header-menu__item-link">TIN TỨC</a>
-                        </li>
+                    @endforeach
                 </ul>
 
             </div>
@@ -173,7 +90,7 @@
                     <a href="" class="header-user__link" title="Đăng nhập" ><i class="fa-regular fa-user"></i></a>
                 </div>
                 <div class="header-function-sub">
-                <a href="" class="header-user__link" title="Giỏ hàng"><i class="fa-solid fa-cart-shopping"></i></a> 
+                <a href="{{ route('product.cart') }}" class="header-user__link" title="Giỏ hàng"><i class="fa-solid fa-cart-shopping"></i></a> 
                 </div>
                 </div>
             </div>
@@ -248,11 +165,11 @@
                         <h4 class="footer__content-heading">
                         VỀ CHÚNG TÔI:
                         </h4>
-                        <p class="footer__content-title"><strong>Công ty TNHH NABI SHOP</strong></p>
+                        <p class="footer__content-title"><strong>Công ty TNHH Green Planer SHOP</strong></p>
                         <p class="footer__content-title"><strong>Địa chỉ: </strong>Số 98 Phố Dương Quảng Hàm, Phường Quan Hoa, Quận Cầu Giấy, TP. Hà Nội</p>
                         <p class="footer__content-title"><strong>Mã số doanh nghiệp: </strong>0108901419 do Sở kế hoạch và đầu tư thành phố Hà Nội cấp ngày 30/08/2024</p>
-                        <p class="footer__content-title"><strong>Điện thoại: </strong>091.9295.123</p>
-                        <p class="footer__content-title"><strong>Email: </strong>daothanh@gmail.com</p>
+                        <p class="footer__content-title"><strong>Điện thoại: </strong>038.9595.157</p>
+                        <p class="footer__content-title"><strong>Email: </strong>null@gmail.com</p>
                         <a href="">
                             <img class="Verification" src="https://storage.googleapis.com/cdn.nhanh.vn/boCongThuong.png" alt="">
                         </a>      
@@ -285,13 +202,13 @@
                 
 
             </div>
-        </footer
+        </footer>
 
     </div>
 
 
+    <script src="{{'fontend'}}/js/main.js"></script>
+    @yield('javascrip')
 </body>
 
-<script src="{{'fontend'}}/js/main.js"></script>
-@yield('javascrip')
 </html>

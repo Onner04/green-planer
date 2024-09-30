@@ -79,7 +79,7 @@ unset($__errorArgs, $__bag); ?>
                         <span>chiều cao : </span>
                 
                         <?php $__currentLoopData = $attrSize; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <label for="">
+                        <label >
                         <input value="<?php echo e($value->id); ?>" name="attr[]" type="checkbox"><?php echo e($value->value); ?>
 
 
@@ -98,7 +98,7 @@ unset($__errorArgs, $__bag); ?>
                             <i class="fa fa-cloud-upload"></i>
                             Chọn ảnh
                         </label>
-                        <input id="file-upload" type="file" onchange="chooseFile(this)" name="file" class="form-control dn <?php $__errorArgs = ['image'];
+                        <input id="file-upload" type="file" name="file" class="form-control dn <?php $__errorArgs = ['image'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

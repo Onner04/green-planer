@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('assest/css/admin.css')}}">
     <link rel="stylesheet" href="{{ asset('assest/css/base.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Green Planer</title>
 </head>
 <body>
     <div class="wrapper" style="background-color: rgb(238, 239, 240); height:100vh ;">
@@ -23,5 +23,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     @yield('tinymce')
+    @yield('banner')
 </body>
 </html>

@@ -22,7 +22,7 @@
               </div>
 
              <div class="child-box-header">
-             <a href="" class="child-box-header__add" >+ Thêm sản phẩm</a>
+             <a href="{{route('product.add')}}" class="child-box-header__add" >+ Thêm sản phẩm</a>
 
                <div class="child-box-search">
                    <input type="text" placeholder="Search" >
@@ -49,7 +49,7 @@
                         <tbody>
                           @foreach($product as $value)
                           <tr>
-                              <td>{{ $value->id}}</td>
+                              <td>{{ $loop->iteration }}</td>
                               <td><span class="table-news-name">{{ $value->name }}</span></td>
                               <td><img src="{{url('images')}}/{{ $value->image }}" style="width:60px" class="table-news-title"></img></td>
                               <td><span class="table-news-category">{{ $value->quantity }}</span></td>
@@ -65,8 +65,8 @@
                           
                               </td>
                               <td>
-                                    <a href="{{ route('update.product',$value->id) }}" class="table-repair">Sửa</a>
-                                    <a href="" class="table-delete">Xóa</a>
+                                    <a href="{{ route('edit.product',$value->id) }}" class="table-repair">Sửa</a>
+                                    <a href="{{ route('delete.product',$value->id) }}" class="table-delete">Xóa</a>
                               </td>
                           </tr>                    
                           @endforeach           

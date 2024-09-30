@@ -11,6 +11,7 @@ use App\Models\productImgs;
 use App\Models\products;
 use App\Models\view;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -27,8 +28,7 @@ class ProductController extends Controller
     }
 
     public function add(){
-        $attrSize = AttrProducts::where('name','height')->get();
-        
+        $attrSize = AttrProducts::all();    
         $categoryChild = categoryChilds::all();
         return view('admin.product.add',compact('attrSize','categoryChild'));
     }
@@ -40,7 +40,7 @@ class ProductController extends Controller
      */
     public function create(Request $req)
     {
-        $this->validate($req,[
+        $this->validate($req, [
                 'name' => 'required|unique:products|max:255',
                 'quantity' => 'required|numeric|min:1',
                 'price' => 'required|numeric|min:1',
@@ -81,10 +81,9 @@ class ProductController extends Controller
          if ($imageName) {
              $req->merge(['image' => $imageName]);
          }
- 
          
          $product = products::create($req->all());
- 
+
          // Handle additional images upload
          $files = [];
          if ($req->hasFile('files')) {
@@ -100,7 +99,6 @@ class ProductController extends Controller
              productImgs::create([
                  'images' => $file['images'],
                  'product_id' => $product->id,
-                 'ten' => 'Giá trị cần thiết', 
              ]);
          }
  
@@ -108,19 +106,17 @@ class ProductController extends Controller
          $attr = $req->attr;
          if (!empty($attr)) {
              foreach ($attr as $value) {
-                 AttrProducts::create([
+                 productAttrs::create([
                      'id_attr' => $value,
-                     'id_product' => $product->id,
-                     'value' => 'Giá trị cần thiết',
-                     'name' => 'Giá trị cần thiết',
+                     'id_product' => $product->id,                                 
                  ]);
              }
          }
- 
          
-         if ($product) {
-             return redirect()->route('product.index')->with('message', 'Thêm mới sản phẩm "' . $req->name . '" thành công');
-         }
+        if ($product) 
+        {
+            return redirect()->route('product.index')->with('message', 'Thêm mới sản phẩm "' . $req->name . '" thành công');
+        }
      }
 
 
@@ -155,9 +151,14 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $attr = productAttrs::where('id_product', $id)->pluck('id_attr')->toArray();
+        
+        $attrSize = AttrProducts::where('name','height')->get();
+        $product = products::find($id);
+        $imageProduct = productImgs::where('product_id',$id)->pluck('images')->toArray();
+        $categorysub = categoryChilds::all();
+        return view('admin.product.update', compact('categorysub','product','imageProduct','attrSize','attr'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -165,9 +166,67 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update(Request $req ,$id)
     {
-        return view('admin.product.update');
+        
+        $attr = $req->attr;
+        if(!empty($attr)) {
+            productAttrs::where('id_product', $id)->delete();   
+            foreach($attr as $value) {
+                productAttrs::create([
+                    'id_attr' => $value,
+                    'id_product' => $id,
+                ]);
+            }
+        }
+
+        $product = products::find($id);
+        if($req->hasFile('file')) {
+            File::delete('images/'.$product->image); 
+            $imageName = time().'_'.$req->file('file')->getClientOriginalName();
+            $req->file->move(public_path('images'),$imageName);
+        } else {
+            $imageName = $product->image;
+        }
+
+        $files = [];
+        if ($req->hasFile('files')) {
+            $imageOld = productImgs::where('product_id',$id)->get();
+            foreach($imageOld as $value) {
+                File::delete('images/'.$value->images);
+            }
+            $deleteImages = productImgs::where('product_id',$id)->delete();
+            
+            foreach($req->file('files') as $key => $file)
+            {   
+                $fileName = time().'_'.$file->getClientOriginalName();  
+                $file->move(public_path('images'), $fileName);
+                $files[]['images'] = $fileName;
+            }
+        }
+        
+        foreach ($files as $key => $file) {
+            productImgs::create([
+                'images'=> $file['images'],
+                'product_id'=> $product->id
+            ]);
+        }
+
+        $product->update([
+            'name' => $req->name,
+            'quantity' => $req->quantity,
+            'price' => $req->price,
+            'sale_price' => $req->sale_price,
+            'category_id' => $req->category_id,
+            'image' => $imageName,
+            'description' => $req->description,
+            'status' => $req->status,
+        ]);
+     
+    if ($product) 
+    {
+        return redirect()->route('product.index')->with('message', 'Thêm mới sản phẩm "' . $req->name . '" thành công');
+    }
     }
 
     /**
@@ -179,5 +238,19 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function delete($id)
+    {
+        $imgOld = productImgs::where('product_id',$id)->get();
+        foreach($imgOld as $value)
+        {
+            File::delete('images/'.$value->images);
+        }
+        productImgs::where('product_id',$id)->delete();
+        $product = products::find($id);
+        $product->delete();
+
+        return redirect()->route('product.index')->with('message','Xóa thành công');
     }
 }
