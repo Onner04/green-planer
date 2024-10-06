@@ -52,7 +52,7 @@
                            
                          </div>
                          <div class="see-all">
-                            <a href="" class="see-all-link">Xem tất cả mẫu mới</a>
+                            <a href="{{ route('see.all') }}" class="see-all-link">Xem tất cả mẫu mới</a>
                         </div>
                         
                     </div>
@@ -63,176 +63,34 @@
                            <h3 class="product-heading__subtitle">Top</h3>
                         </div>
                         <div class="row">
-                          <div class="col l-3 m-6 c-6 ">
-                              <div class="product">
-                                  <a href="" class="product-item">
-                                      <div class="product-item__img" style="background-image:url(./assest/img/tree-3.jpg)"></div>
-                                      <h4 class="product-item__name">cây NB02</h4>
-                                      <div class="product-item__price">
-                                          <span class="product-item__price-old">500.000đ</span>
-                                          <span class="product-item__price-present">299.000đ</span>
-                                      </div>
-                                      <span class="product-item__sale">Giảm 30%</span>
-                                  </a>
-                                  <div class="product-item__btn">
-                                     
-                                     
-                                      <a href="" class="product-item__btn-buy">
-                                          <i class="ti-eye"></i>
-                                            Xem chi tiết
-                                      </a>
-                                  </div>
-                              </div>                               
-                          </div>
-                          <div class="col l-3 m-6 c-6 ">
-                              <div class="product">
-                                  <a href="" class="product-item">
-                                      <div class="product-item__img" style="background-image:url(./assest/img/tree-3.jpg)"></div>
-                                      <h4 class="product-item__name">cây NB02</h4>
-                                      <div class="product-item__price">
-                                          <span class="product-item__price-old">500.000đ</span>
-                                          <span class="product-item__price-present">299.000đ</span>
-                                      </div>
-                                      <span class="product-item__sale">Giảm 30%</span>
-                                  </a>
-                                  <div class="product-item__btn">
-                                     
-                                     
-                                      <a href="" class="product-item__btn-buy">
-                                          <i class="ti-eye"></i>
-                                            Xem chi tiết
-                                      </a>
-                                  </div>
-                              </div>                               
-                          </div>
-                          <div class="col l-3 m-6 c-6 ">
-                              <div class="product">
-                                  <a href="" class="product-item">
-                                      <div class="product-item__img" style="background-image:url(./assest/img/tree-3.jpg)"></div>
-                                      <h4 class="product-item__name">cây NB02</h4>
-                                      <div class="product-item__price">
-                                          <span class="product-item__price-old">500.000đ</span>
-                                          <span class="product-item__price-present">299.000đ</span>
-                                      </div>
-                                      <span class="product-item__sale">Giảm 30%</span>
-                                  </a>
-                                  <div class="product-item__btn">
-                                     
-                                     
-                                      <a href="" class="product-item__btn-buy">
-                                          <i class="ti-eye"></i>
-                                            Xem chi tiết
-                                      </a>
-                                  </div>
-                              </div>                               
-                          </div>
-                          <div class="col l-3 m-6 c-6 ">
-                              <div class="product">
-                                  <a href="" class="product-item">
-                                      <div class="product-item__img" style="background-image:url(./assest/img/tree-3.jpg)"></div>
-                                      <h4 class="product-item__name">cây NB02</h4>
-                                      <div class="product-item__price">
-                                          <span class="product-item__price-old">500.000đ</span>
-                                          <span class="product-item__price-present">299.000đ</span>
-                                      </div>
-                                      <span class="product-item__sale">Giảm 30%</span>
-                                  </a>
-                                  <div class="product-item__btn">
-                                     
-                                     
-                                      <a href="" class="product-item__btn-buy">
-                                          <i class="ti-eye"></i>
-                                            Xem chi tiết
-                                      </a>
-                                  </div>
-                              </div>                               
-                          </div>
-                          <div class="col l-3 m-6 c-6 ">
-                              <div class="product">
-                                  <a href="" class="product-item">
-                                      <div class="product-item__img" style="background-image:url(./assest/img/tree-3.jpg)"></div>
-                                      <h4 class="product-item__name">cây NB02</h4>
-                                      <div class="product-item__price">
-                                          <span class="product-item__price-old">500.000đ</span>
-                                          <span class="product-item__price-present">299.000đ</span>
-                                      </div>
-                                      <span class="product-item__sale">Giảm 30%</span>
-                                  </a>
-                                  <div class="product-item__btn">
-                                     
-                                     
-                                      <a href="" class="product-item__btn-buy">
-                                          <i class="ti-eye"></i>
-                                            Xem chi tiết
-                                      </a>
-                                  </div>
-                              </div>                               
-                          </div>
-                          <div class="col l-3 m-6 c-6 ">
-                              <div class="product">
-                                  <a href="" class="product-item">
-                                      <div class="product-item__img" style="background-image:url(./assest/img/tree-3.jpg)"></div>
-                                      <h4 class="product-item__name">cây NB02</h4>
-                                      <div class="product-item__price">
-                                          <span class="product-item__price-old">500.000đ</span>
-                                          <span class="product-item__price-present">299.000đ</span>
-                                      </div>
-                                      <span class="product-item__sale">Giảm 30%</span>
-                                  </a>
-                                  <div class="product-item__btn">
-                                     
-                                     
-                                      <a href="" class="product-item__btn-buy">
-                                          <i class="ti-eye"></i>
-                                            Xem chi tiết
-                                      </a>
-                                  </div>
-                              </div>                               
-                          </div>
-                          <div class="col l-3 m-6 c-6 ">
-                              <div class="product">
-                                  <a href="" class="product-item">
-                                    <div class="product-item__img" style="background-image:url(./assest/img/tree-3.jpg)"></div>       
-                                       <h4 class="product-item__name">cây NB02</h4>
-                                      <div class="product-item__price">
-                                          <span class="product-item__price-old">500.000đ</span>
-                                          <span class="product-item__price-present">299.000đ</span>
-                                      </div>
-                                      <span class="product-item__sale">Giảm 30%</span>
-                                  </a>
-                                  <div class="product-item__btn">
-                                     
-                                     
-                                      <a href="" class="product-item__btn-buy">
-                                          <i class="ti-eye"></i>
-                                            Xem chi tiết
-                                      </a>
-                                  </div>
-                              </div>                               
-                          </div>
-                          <div class="col l-3 m-6 c-6 ">
-                              <div class="product">
-                                  <a href="" class="product-item">
-                                    <div class="product-item__img" style="background-image:url(./assest/img/tree-3.jpg)"></div>                                      <h4 class="product-item__name">cây NB02</h4>
-                                      <div class="product-item__price">
-                                          <span class="product-item__price-old">500.000đ</span>
-                                          <span class="product-item__price-present">299.000đ</span>
-                                      </div>
-                                      <span class="product-item__sale">Giảm 30%</span>
-                                  </a>
-                                  <div class="product-item__btn">
-                                     
-                                     
-                                      <a href="" class="product-item__btn-buy">
-                                          <i class="ti-eye"></i>
-                                            Xem chi tiết
-                                      </a>
-                                  </div>
-                              </div>                               
-                          </div>
+
+                        @foreach($Topbuy as $value)
+                                <div class="col l-3 m-6 c-6">
+                                    <div class="product">
+                                        <a href="{{ route('product.detail',$value->id)}}" class="product-item">
+                                            <div class="product-item__img" style="background-image:url({{ url('images') }}/{{ $value->image }})"></div>
+                                            <h4 class="product-item__name">{{$value->name}}</h4>
+                                            <div class="product-item__price">
+                                               
+                                                <span class="product-item__price-old">{{ number_format($value->sale_price, 0, ".", ".") }}đ</span>
+                                                <span class="product-item__price-present">{{ number_format($value->price, 0, ".", ".") }}đ</span>
+                                            </div>
+                                            <span class="product-item__sale">Giảm {{ ceil(100 - (($value->sale_price / $value->price) * 100)) }}%</span>
+                                        </a>
+                                        <div class="product-item__btn">
+                                            <a href="{{ route('product.detail', $value->id) }}" class="product-item__btn-buy">
+                                                <i class="fa-solid fa-cart-shopping product-item__btn-buy-icon"></i>
+                                            
+                                                Đặt hàng
+                                            </a>
+                                        </div>
+                                    </div>   
+                                </div>
+                            @endforeach
+                         
                         </div>
                         <div class="see-all">
-                            <a href="" class="see-all-link">Xem tất cả</a>
+                            <a href="{{ route('product.top') }}" class="see-all-link">Xem tất cả</a>
                         </div>
                     </div>
                 </div>

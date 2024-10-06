@@ -9,8 +9,7 @@
           <div class="child-box " style="width:100%;">
               <div class="content">
               <?php if(Session::has('message')): ?>
-                    <div class="alert alert-success">
-                          <button type="button" data-dismiss="alert" class="close" aria-label="Close">
+                    <div class="alert alert-success" id="success-alert">
                             <span aria-hidden="true">&times;</span></button>
                             <strong>
                               <?php echo e(Session::get('message')); ?>
@@ -48,51 +47,52 @@
                             <tr>
                                 <td><?php echo e($loop->iteration); ?></td>
                                 <td><span class="table-news-name"><?php echo e($value->name); ?></span></td>
-                                  <td>
-                                    
-                                  <?php $__currentLoopData = !empty($value->orderDetail) ? $value->orderDetail : []; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                          
-                                  <img src="<?php echo e(url('images')); ?>/<?php echo e($value->image); ?>" style="width:60px" class="table-news-title"></img>
-                                  <div style="display:flex;margin:3px;">
-                                          <p>
-                                              <strong><?php echo e($item->product->product_name); ?> </strong><br/>
-                                              
-                                              Chiều cao:<?php echo e($item->size); ?>
+                                <td>
+                                    <?php $__currentLoopData = $value->orderDetail; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <div style="display: flex;">
+                                            <img src="<?php echo e(url('images/' . $item->product->image)); ?>" style="width: 60px;" class="table-news-title" alt="<?php echo e($item->product->product_name); ?>">
+                                            <div class="product-item" style="line-height: 20px;">
+                                              <p> <?php echo e($item->size); ?></p>
+                                              <p style="color: #373ce3;"> x<?php echo e($item->quantity); ?></p>
 
-                                              <span style="color:#373ce3">x<?php echo e($item->quantity); ?></span>
-                                          </p>
-                                    </div>
-                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
+                                            </div>
+                                           
+                                        </div>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </td>
                                 <td><span class="table-news-category"><?php echo e($value->phone); ?></span></td>
-                                <td><span><?php echo e(number_format($value->total_price,0,".",".")); ?>đ</span></td>
-                                <td class="table-news-add" style="width:25%;"><span ><?php echo e($value->addrest); ?> </span></td>
+                                <td><span><?php echo e(number_format($value->total_price, 0, ".", ".")); ?>đ</span></td>
+                                <td class="table-news-add" style="width: 25%;"><span><?php echo e($value->addrest); ?></span></td>
                                 <td><span class="table-news-status"><?php echo e($value->note); ?></span></td>
                                 <td><span class="table-news-status"><?php echo e($value->created_at); ?></span></td>
                                 <td>
-                                  <?php if($value->status == 1): ?>
-                                  <span class="label label-danger">Chưa xác nhận</span>
-                                  <?php else: ?>
-                                  <span class="label label-success">Đã xác nhận</span>
-                                  <?php endif; ?>
-                              
+                                    <?php if($value->status == 1): ?>
+                                        <span class="label label-danger">Chưa xác nhận</span>
+                                    <?php else: ?>
+                                        <span class="label label-success">Đã xác nhận</span>
+                                    <?php endif; ?>
                                 </td>
-                                <td style="display: flex;">
-                                <form action="<?php echo e(route('order.update',$value->id)); ?>" method="post">
-                                    <?php echo csrf_field(); ?>
-                                    <?php echo method_field('PUT'); ?>
-                                    <input type="hidden" name="status" value="2">
-                                    <button style="border:none;background: transparent;" type="submit" class="" title="Xác Nhận"><i style="color:#00a65a" class="fa fa-fw fa-check-circle"></i></button>
-                                </form>
-                                <form action="<?php echo e(route('order.destroy',$value->id)); ?>" method="post">
-                                    <?php echo csrf_field(); ?>
-                                    <?php echo method_field('DELETE'); ?>
-                                    <input type="hidden" name="status" value="2">
-                                    <button style="border:none;background: transparent;" type="submit" onclick="return confirm('Bạn có muốn xóa đơn hàng này không?')" class="" title="Xóa"><i style="color:red" class="fa-solid fa-trash"></i></button>
-                                </form>
-                                </td>  
-                              </tr>                    
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                 
+                                <td >
+                                    <form action="<?php echo e(route('order.update', $value->id)); ?>" method="post">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('PUT'); ?>
+                                        <input type="hidden" name="status" value="2">
+                                        <button style="border: none; background: transparent;" type="submit" title="Xác Nhận">
+                                            <i style="color: #00a65a;" class="fa fa-fw fa-check-circle"></i>
+                                        </button>
+                                    </form>
+                                    <form action="<?php echo e(route('order.destroy', $value->id)); ?>" method="post">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('DELETE'); ?>
+                                        <input type="hidden" name="status" value="2">
+                                        <button style="border: none; background: transparent;" type="submit" onclick="return confirm('Bạn có muốn xóa đơn hàng này không?')" title="Xóa">
+                                            <i style="color: red;" class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+             
                       </tbody>
                   </table>
               </div>
@@ -101,6 +101,17 @@
 </div>
 
 <?php $__env->stopSection(); ?>
+<script>
+    
+    window.onload = function() {
+        var alert = document.getElementById('success-alert');
+        if (alert) {
+            setTimeout(function() {
+                alert.style.display = 'none'; 
+            }, 5000); 
+        }
+    };
+</script>
 
 
 <?php echo $__env->make('admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\code\laravel\Green-planer\resources\views/admin/order/index.blade.php ENDPATH**/ ?>

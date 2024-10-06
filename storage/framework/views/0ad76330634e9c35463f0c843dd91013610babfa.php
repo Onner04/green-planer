@@ -7,7 +7,7 @@
     <div class="cart">
 
         <div class="breadcrumb">
-            <a href="#">Trang chủ</a> > Giỏ hàng
+            <a href="http://127.0.0.1:8000/">Trang chủ</a> > Giỏ hàng
         </div>
         <div class="cart-body">
 
@@ -23,14 +23,12 @@
                 </thead>
                 <tbody>
                     <?php $__currentLoopData = $cart->getItems(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <tr>
-                        
+                    <tr>              
                         <td >
                             <img src="<?php echo e(url('images')); ?>/<?php echo e($value['image']); ?>" alt="" class="product-image">
                             <div>
                                 <strong><?php echo e($value['product_name']); ?></strong><br>
-                                Chiều cao : <?php echo e($value['height']); ?><br>
-                                
+                                Chiều cao : <?php echo e($value['height']); ?><br>                        
                             </div>
                         </td>
                         <td><?php echo e(number_format($value['price'],0,".",".")); ?> đ</td>
@@ -40,7 +38,6 @@
                                 <input type="hidden" name="id" value="<?php echo e($key); ?>" >
                                 <input type="number"  name="quantity" value="<?php echo e($value['quantity']); ?>" min="1" class="quantity-input">
                                 <button class="update-btn" type="submit">Cập nhật</button>
-
                             </form>
                         </td>
                         <td><?php echo e(number_format($value['price'] * $value['quantity'],0,".",".")); ?> đ</td>

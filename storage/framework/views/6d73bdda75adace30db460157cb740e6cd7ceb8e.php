@@ -1,12 +1,19 @@
 
 <?php $__env->startSection('home'); ?>
+<style>
+    @media only screen and (max-width: 1200px){
+        .content-wrapper{
+            width: 100% !important;
+        }
+    }
+</style>
 <div class="content-wrapper" style="width:80%">
 <div class="containner-home">
                 <div class="container-home-data">
                     <div class="container-home-data__box">
                         <div class="container-home-data__box-item">
                             <p class="container-home-data__box-item-title">Đơn đặt hàng</p>
-                            <p class="container-home-data__box-item-core">84</p>
+                            <p class="container-home-data__box-item-core"><?php echo e(isset($order) ? count($order) : ''); ?></p>
                         </div>
                        
                         <i class="fa-solid  fa-bag-shopping container-home-data__box-item-icon"></i>
@@ -14,7 +21,7 @@
                     <div class="container-home-data__box">
                         <div class="container-home-data__box-item">
                             <p class="container-home-data__box-item-title">Doanh Thu</p>
-                            <p class="container-home-data__box-item-core">$72,00</p>
+                            <p class="container-home-data__box-item-core"><?php echo e(isset($totalRevenue) ? number_format($totalRevenue, 0, '', ',') : ''); ?> đ</p>
                         </div>
                         
                         <i class="fa-brands fa-shopify container-home-data__box-item-icon"></i>
@@ -22,7 +29,7 @@
                     <div class="container-home-data__box">
                         <div class="container-home-data__box-item">
                             <p class="container-home-data__box-item-title">Lượt truy cập</p>
-                            <p class="container-home-data__box-item-core">72</p>
+                            <p class="container-home-data__box-item-core"><?php echo e(isset($views) ? $views : ''); ?></p>
                         </div>
                        
                         <i class="fa-solid fa-eye container-home-data__box-item-icon"></i>
@@ -32,30 +39,18 @@
                 <div class="container-home-child">
                     <div class="container-home-child-top">
                         <h3 class="container-home-child-top__title">Top bán chạy</h3>
+                        
+                    <?php $__currentLoopData = $Topbuy; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="container-home-child-top__product">
-                            <img src="./assest/img/455801961_2322232441456785_4605837728110953984_n.png" alt="" class="container-home-child-top__product-img">
+                            <img src="<?php echo e(url('images')); ?>/<?php echo e($value->image); ?>" alt="" class="container-home-child-top__product-img">
                             <div class="container-home-child-top__product-info">
-                                <p class="container-home-child-top__product-name">Tên cây: Hoa Sen</p>
-                                <p class="container-home-child-top__product-name">Doanh thu: 755.000đ</p>
+                                <p class="container-home-child-top__product-name">Tên cây: <?php echo e($value->name); ?></p>
+                                <p class="container-home-child-top__product-name">Giá bán: <?php echo e(number_format($value->sale_price, 0, ".", ".")); ?>đ</p>
                             </div>
                             <p class="container-home-child-top__product-sum">Số lượng đơn hàng : 75</p>
                         </div>
-                        <div class="container-home-child-top__product">
-                            <img src="./assest/img/455801961_2322232441456785_4605837728110953984_n.png" alt="" class="container-home-child-top__product-img">
-                            <div class="container-home-child-top__product-info">
-                                <p class="container-home-child-top__product-name">Tên cây: Hoa Sen</p>
-                                <p class="container-home-child-top__product-name">Doanh thu: 755.000đ</p>
-                            </div>
-                            <p class="container-home-child-top__product-sum">Số lượng đơn hàng : 75</p>
-                        </div>
-                        <div class="container-home-child-top__product">
-                            <img src="./assest/img/455801961_2322232441456785_4605837728110953984_n.png" alt="" class="container-home-child-top__product-img">
-                            <div class="container-home-child-top__product-info">
-                                <p class="container-home-child-top__product-name">Tên cây: Hoa Sen</p>
-                                <p class="container-home-child-top__product-name">Doanh thu: 755.000đ</p>
-                            </div>
-                            <p class="container-home-child-top__product-sum">Số lượng đơn hàng : 75</p>
-                        </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    
 
                     </div>
 

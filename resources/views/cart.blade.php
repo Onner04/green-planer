@@ -7,7 +7,7 @@
     <div class="cart">
 
         <div class="breadcrumb">
-            <a href="#">Trang chủ</a> > Giỏ hàng
+            <a href="http://127.0.0.1:8000/">Trang chủ</a> > Giỏ hàng
         </div>
         <div class="cart-body">
 

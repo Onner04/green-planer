@@ -14,58 +14,70 @@
                     <div class="body-box-add-select">
                         <p  class="box-add-select-title">Tên sản phẩm</p>
                         <input type="text" value="<?php echo e(old('name')); ?>" name="name"  placeholder="Nhập tên sản phẩm" class="box-add-select-input">
-                        <?php $__errorArgs = ['name'];
+                        <div>
+
+                            <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                            <span class="message-err" style="color:red;"><?php echo e($message); ?></span>
-                        <?php unset($message);
+                                <span class="message-err" style="color:red;"><?php echo e($message); ?></span>
+                            <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                        </div>
                     </div>
                     <div class="body-box-add-select">
                         <p class="box-add-select-title">số lượng sản phẩm</p>
                         <input type="text" value="<?php echo e(old('quantity')); ?>" name="quantity"  placeholder="Nhập số lượng" class="box-add-select-input">
-                        <?php $__errorArgs = ['name'];
+                        <div>
+
+                            <?php $__errorArgs = ['quantity'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                            <span class="message-err" style="color:red;"><?php echo e($message); ?></span>
-                        <?php unset($message);
+                                <span class="message-err" style="color:red;"><?php echo e($message); ?></span>
+                            <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                        </div>
                     </div>
                     <div class="body-box-add-select">
                         <p  class="box-add-select-title">giá sản phẩm</p>
                         <input type="text" value="<?php echo e(old('price')); ?>" name="price"   placeholder="Nhập giá sản phẩm" class="box-add-select-input">
-                        <?php $__errorArgs = ['name'];
+                        <div>
+                            <?php $__errorArgs = ['price'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                            <span class="message-err" style="color:red;"><?php echo e($message); ?></span>
-                        <?php unset($message);
+                                <span class="message-err" style="color:red;"><?php echo e($message); ?></span>
+                            <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+
+                        </div>
                     </div>
                     <div class="body-box-add-select">
                         <p  class="box-add-select-title">giá sale</p>
                         <input type="text" value="<?php echo e(old('sale_price')); ?>" name="sale_price"   placeholder="Nhập giá sale" class="box-add-select-input">
-                        <?php $__errorArgs = ['sale_price'];
+                        <div>
+
+                            <?php $__errorArgs = ['sale_price'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                            <span class="message-err" style="color:red;"><?php echo e($message); ?></span>
-                        <?php unset($message);
+                                <span class="message-err" style="color:red;"><?php echo e($message); ?></span>
+                            <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                        </div>
                     </div>
                     <div class="body-box-add-select">
                         <label style="font-size:15px ;" for="">Danh mục sản phẩm</label>
@@ -106,22 +118,25 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>">
+                        <div>
 
-                        <?php $__errorArgs = ['file'];
+                            <?php $__errorArgs = ['file'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                            <span class="message-err" style="color:red;"><?php echo e($message); ?></span>
-                        <?php unset($message);
+                                <span class="message-err" style="color:red;"><?php echo e($message); ?></span>
+                            <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                        </div>
+
                     </div>
                     <div class="form-group">
                         <label for="files">Ảnh mô tả</label>
                         <label for="files" style="display:block;height:120px">
-                        <div class="image-preview" style="background-image:url( <?php echo e(url('assest')); ?>/img/upfile.JPG )"></div>
+                            <div class="image-preview" style="background-image:url('<?php echo e(url('assest')); ?>/img/upfile.JPG')"></div>
                         </label>
                         <label for="files" class="custom-file">
                             <i class="fa fa-cloud-upload"></i>

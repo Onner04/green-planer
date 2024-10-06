@@ -1,5 +1,6 @@
 
 <?php $__env->startSection('home'); ?>
+
 <div class="content-wrapper" style="width:70% ; ">
 
   <div class="child">

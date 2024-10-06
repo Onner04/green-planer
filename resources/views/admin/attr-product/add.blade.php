@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('home')
+
 <div class="content-wrapper" style="width:70% ;">
   <div class="body-add">
           <div class="body-add-content">
@@ -14,9 +15,12 @@
                   <div class="body-box-add-select">
                       <p class="box-add-select-title">chiều cao</p>
                       <input type="text" value="{{old('value')}}" name="height" placeholder="Nhập chiều cao" class="box-add-select-input">
-                        @error('name')
-                            <span class="message-err" style="color:red;">{{ $message }}</span>
-                        @enderror
+                      <div>
+                          @error('name')
+                              <span class="message-err" style="color:red;">{{ $message }}</span>
+                          @enderror
+
+                      </div>
                   </div>
                   <div class="box-footer">
                       <button type="submit" class="btn ">Thêm mới</button>

@@ -53,6 +53,7 @@
                 <h3>Thông tin giao hàng</h3>
                 <form action="" method="POST">
                     @csrf
+                    <input type="hidden" name="id_user" value="{{ Auth::id() }}">
                     <div class="body-box-select">
                         <label for="name">Tên:</label>
                         <input type="text" id="name" name="name" placeholder="Nhập tên của bạn ...">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\attrProduct\AttrController;
 use App\Http\Controllers\Admin\banner\BannerController;
@@ -23,12 +24,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/admin',[AdminController::class,'home'])->name('admin.home');
-Route::get('login-admin',[AdminController::class,'login'])->name('login.admin');
-Route::post('login-admin',[AdminController::class,'login'])->name('login.admin');
+Route::get('login-admin', [AdminController::class,'login'])->name('login.admin');
+Route::post('login-admin', [AdminController::class,'postLogin'])->name('postLogin.admin'); 
+Route::get('logout-admin', [AdminController::class,'logout'])->name('logout.admin');
 
-Route::prefix('admin')->group(function(){
-    Route::get('/',[AdminController::class,'home'])->name('home');
+Route::middleware('checkAdmin')->prefix('admin')->group(function(){
+    Route::get('/',[AdminController::class,'home'])->name('admin.home');
 
 
     // product
@@ -89,10 +90,20 @@ Route::prefix('admin')->group(function(){
     // delete-attr-product
     Route::get('/attr-delete/{id}',[AttrController::class,'delete'])->name('attr.delete');
 
-    // order
-   
+
+    // order   
     Route::resource('order',OrderController::class);
 });
+
+// Đăng nhập , đăng kí người dùng 
+
+    Route::get('/account',[AccountController::class,'account'])->name('account');
+
+    // Đăng kí 
+    Route::post('/register',[AccountController::class,'register'])->name('account.register');
+
+    // đăng nhập
+    Route::post('/login',[AccountController::class,'login'])->name('account.login');
 
 
 
@@ -100,14 +111,24 @@ Route::prefix('/')->group(function(){
     Route::get('/',[HomeController::class,'home'])->name('home');
     //  product-detail
     Route::get('product-detail/{id}',[HomeController::class,'product'])->name('product.detail');
+    Route::get('/see-all', [HomeController::class,'seeAll'])->name('see.all');
+    Route::get('/top-buy',[HomeController::class,'TopBuy'])->name('product.top');
 
+
+    
     // cart
+    Route::middleware('checkUser')->prefix('/')->group(function () {
+        Route::get('/user',[AccountController::class,'user'])->name('user');
+        Route::get('logout-user', [AccountController::class,'logout'])->name('logout.user');
+    
+        Route::get('product-order',[OrderProductController::class,'order'])->name('product.order');
+        Route::post('product-order',[OrderProductController::class,'addOrder'])->name('buy.order');
+    
+        Route::get('thanks',[OrderProductController::class,'thanks'])->name('buy.thanks');
+    });
     Route::get('product-cart',[CartController::class,'cart'])->name('product.cart');
     Route::post('cart-add', [CartController::class,'add'])->name('cart.add');
     Route::post('cart-update',[CartController::class,'update'])->name('cart.update');
     Route::get('cart-delete/{id}',[CartController::class,'delete'])->name('cart.delete');
-
-    Route::get('product-order',[OrderProductController::class,'order'])->name('product.order');
-   
 
 });

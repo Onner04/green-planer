@@ -18,6 +18,7 @@ class OrderController extends Controller
     public function index()
     {
         $order = order::with('orderDetail.product')->get();
+        
        
         return view('admin.order.index',compact('order'));
     }

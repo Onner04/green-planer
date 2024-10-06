@@ -18,6 +18,11 @@ class CartController extends Controller
         return view('cart', compact('category','cart','totalPrice','totalQuantity'));
     }
     public function add( Request $req){
+        $this->validate($req, [
+            'height'  =>['required']
+        ],[
+            'height.required' =>'vui lòng chọn chiều cao sản phẩm',
+        ]);
         $product = products::find($req->id);
         
         $cart = new Cart() ;

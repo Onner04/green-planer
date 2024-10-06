@@ -53,7 +53,7 @@
             </div>
 
             <div class="header-logo">
-                <a class="header-logo__link" href="#">
+                <a class="header-logo__link" href="http://127.0.0.1:8000/">
                     <img class="header-logo-img"  src="<?php echo e(url('assest')); ?>/img/logo.jpg" alt="">
                 </a>
             </div>
@@ -87,7 +87,7 @@
                 <div class="header-function">
                     
                 <div class="header-function-sub">
-                    <a href="" class="header-user__link" title="Đăng nhập" ><i class="fa-regular fa-user"></i></a>
+                    <a href="<?php echo e(route('user')); ?>" class="header-user__link" title="Đăng nhập" ><i class="fa-regular fa-user"></i></a>
                 </div>
                 <div class="header-function-sub">
                 <a href="<?php echo e(route('product.cart')); ?>" class="header-user__link" title="Giỏ hàng"><i class="fa-solid fa-cart-shopping"></i></a> 

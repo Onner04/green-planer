@@ -1050,3 +1050,10 @@
     height: 100%;
     display: block;
 }
+
+
+
+.border-black{
+    border: 0.1rem solid #000 !important;
+  
+}

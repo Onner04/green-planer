@@ -51,6 +51,16 @@
                             <input class="label-height-item" name="height" value="<?php echo e($item); ?>" type="radio"><?php echo e($item); ?>
 
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__errorArgs = ['height'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <span class="message-err" style="color:red;font-size: 14px;display: block;"><?php echo e($message); ?></span>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </label>
                         <div class="lable-num">
                             <input type="hidden" name="id" value="<?php echo e($product->id); ?>">
@@ -114,5 +124,20 @@
 
     </div>
         </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('js'); ?>
+<script>
+    var heights = document.querySelectorAll('.label-height-item')
+
+    heights.forEach(function(item,index){
+        item.onclick = function(){
+            if(document.querySelector(".label-height-item.border-black")){
+                document.querySelector(".lable-size.border-black").classList.remove('border-black')
+            }
+            this.classList.add('border-black');
+        }
+    })
+</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\code\laravel\Green-planer\resources\views/product-detail.blade.php ENDPATH**/ ?>

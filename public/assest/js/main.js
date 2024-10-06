@@ -39,4 +39,10 @@ const childMenu = $('.header-admin__child');
                 }
             });
         });
+    });
+    const mobileMenuToggle = $('.mobile-menu-toggle');
+    const nav = $('.nav');
+
+    mobileMenuToggle.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
     });    

@@ -1,5 +1,12 @@
 @extends('admin.master')
 @section('home')
+<style>
+    @media only screen and (max-width: 1200px){
+        .content-wrapper{
+            width: 100% !important;
+        }
+    }
+</style>
 <div class="content-wrapper" style="width:75% ; ">
 
   <div class="child">
@@ -9,8 +16,7 @@
           <div class="child-box " style="width:100%;">
               <div class="content">
               @if(Session::has('message'))
-                    <div class="alert alert-success">
-                          <button type="button" data-dismiss="alert" class="close" aria-label="Close">
+                    <div class="alert alert-success" id="success-alert">
                             <span aria-hidden="true">&times;</span></button>
                             <strong>
                               {{ Session::get('message') }}
@@ -46,51 +52,53 @@
                           @foreach($order as $value)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td><span class="table-news-name">{{$value->name}}</span></td>
-                                  <td>
-                                    
-                                  @foreach(!empty($value->orderDetail) ? $value->orderDetail : [] as $item)
-                          
-                                  <img src="{{url('images')}}/{{ $value->image }}" style="width:60px" class="table-news-title"></img>
-                                  <div style="display:flex;margin:3px;">
-                                          <p>
-                                              <strong>{{ $item->product->product_name }} </strong><br/>
-                                              
-                                              Chiều cao:{{ $item->size }}
-                                              <span style="color:#373ce3">x{{ $item->quantity }}</span>
-                                          </p>
-                                    </div>
-                                  @endforeach  
+                                <td><span class="table-news-name">{{ $value->name }}</span></td>
+                                <td>
+                                    @foreach($value->orderDetail as $item)
+                                        <div style="display: flex;">
+                                            <img src="{{ url('images/' . $item->product->image) }}" style="width: 60px;" class="table-news-title" alt="{{ $item->product->product_name }}">
+                                            <div class="product-item" style="line-height: 20px;">
+                                              <p> {{ $item->size }}</p>
+                                              <p style="color: #373ce3;"> x{{ $item->quantity }}</p>
+
+                                            </div>
+                                           
+                                        </div>
+                                    @endforeach
                                 </td>
                                 <td><span class="table-news-category">{{ $value->phone }}</span></td>
-                                <td><span>{{ number_format($value->total_price,0,".",".") }}đ</span></td>
-                                <td class="table-news-add" style="width:25%;"><span >{{ $value->addrest }} </span></td>
+                                <td><span>{{ number_format($value->total_price, 0, ".", ".") }}đ</span></td>
+                                <td class="table-news-add" style="width: 25%;"><span>{{ $value->addrest }}</span></td>
                                 <td><span class="table-news-status">{{ $value->note }}</span></td>
                                 <td><span class="table-news-status">{{ $value->created_at }}</span></td>
                                 <td>
-                                  @if($value->status == 1)
-                                  <span class="label label-danger">Chưa xác nhận</span>
-                                  @else
-                                  <span class="label label-success">Đã xác nhận</span>
-                                  @endif
-                              
+                                    @if($value->status == 1)
+                                        <span class="label label-danger">Chưa xác nhận</span>
+                                    @else
+                                        <span class="label label-success">Đã xác nhận</span>
+                                    @endif
                                 </td>
-                                <td style="display: flex;">
-                                <form action="{{ route('order.update',$value->id) }}" method="post">
-                                    @csrf
-                                    @method('PUT')
-                                    <input type="hidden" name="status" value="2">
-                                    <button style="border:none;background: transparent;" type="submit" class="" title="Xác Nhận"><i style="color:#00a65a" class="fa fa-fw fa-check-circle"></i></button>
-                                </form>
-                                <form action="{{ route('order.destroy',$value->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="hidden" name="status" value="2">
-                                    <button style="border:none;background: transparent;" type="submit" onclick="return confirm('Bạn có muốn xóa đơn hàng này không?')" class="" title="Xóa"><i style="color:red" class="fa-solid fa-trash"></i></button>
-                                </form>
-                                </td>  
-                              </tr>                    
-                            @endforeach                 
+                                <td >
+                                    <form action="{{ route('order.update', $value->id) }}" method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="status" value="2">
+                                        <button style="border: none; background: transparent;" type="submit" title="Xác Nhận">
+                                            <i style="color: #00a65a;" class="fa fa-fw fa-check-circle"></i>
+                                        </button>
+                                    </form>
+                                    <form action="{{ route('order.destroy', $value->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="status" value="2">
+                                        <button style="border: none; background: transparent;" type="submit" onclick="return confirm('Bạn có muốn xóa đơn hàng này không?')" title="Xóa">
+                                            <i style="color: red;" class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+             
                       </tbody>
                   </table>
               </div>
@@ -99,4 +107,15 @@
 </div>
 
 @stop
+<script>
+    
+    window.onload = function() {
+        var alert = document.getElementById('success-alert');
+        if (alert) {
+            setTimeout(function() {
+                alert.style.display = 'none'; 
+            }, 5000); 
+        }
+    };
+</script>
 

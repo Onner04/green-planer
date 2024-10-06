@@ -1,6 +1,9 @@
     <div class="header">
             <div class="header-logo">
                 <img src="{{ url('assest') }}/img/logo.jpg" alt="" class="header-logo-img">
+                <div class="mobile-menu-toggle">
+                    <i class="fa-solid fa-bars "></i>
+                </div>
             </div>
             <div class="header-admin ">
                 <a href="#" class="header-admin__item-link"><img src="{{ url('assest') }}/img/images.png" alt=""> </a>

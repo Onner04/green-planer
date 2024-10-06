@@ -1,5 +1,12 @@
 @extends('master')
 @section('home')
+<style>
+    @media only screen and (max-width: 768px) {
+        table{
+            width: 100%;
+        }
+    }
+</style>
 <div class="app__container" style="display:flex ;justify-content:center ; ">
     <div class="container-body"style="margin-top: 100px; width:85%">
         <div class="branch">
@@ -50,6 +57,9 @@
                             @foreach( isset($height) ? $height : [] as $item)                     
                             <input class="label-height-item" name="height" value="{{ $item }}" type="radio">{{$item}}
                             @endforeach
+                            @error('height')
+                                <span class="message-err" style="color:red;font-size: 14px;display: block;">{{ $message }}</span>
+                            @enderror
                         </label>
                         <div class="lable-num">
                             <input type="hidden" name="id" value="{{ $product->id }}">
@@ -113,4 +123,19 @@
 
     </div>
         </div>
+@stop
+
+@section('js')
+<script>
+    var heights = document.querySelectorAll('.label-height-item')
+
+    heights.forEach(function(item,index){
+        item.onclick = function(){
+            if(document.querySelector(".label-height-item.border-black")){
+                document.querySelector(".lable-size.border-black").classList.remove('border-black')
+            }
+            this.classList.add('border-black');
+        }
+    })
+</script>
 @stop

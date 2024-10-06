@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('home')
+
 <div class="content-wrapper" style="width:70% ; ">
 
   <div class="child"  style="margin-top: 30px;">

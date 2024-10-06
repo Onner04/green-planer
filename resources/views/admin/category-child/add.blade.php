@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('home')
+
 <div class="content-wrapper" style="width:70% ;">
   <div class="body-add">
           <div class="body-add-content">
@@ -14,9 +15,12 @@
                 <div class="body-box-add-select">
                     <p class="box-add-select-title">Tên menu</p>
                     <input type="text" value="{{old('name')}}" name="name" placeholder="Nhập tên menu" class="box-add-select-input">
-                    @error('name')
-                        <span class="message-err" style="color:red;">{{ $message }}</span>
-                    @enderror
+                    <div>
+                      @error('name')
+                          <span class="message-err" style="color:red;">{{ $message }}</span>
+                      @enderror
+
+                    </div>
                 </div>
                 <div class="body-box-add-select">
                     <label style="font-size:15px ;" for="">Danh mục cha</label>

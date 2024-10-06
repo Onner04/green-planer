@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('home')
+
 <div class="content-wrapper" style="width:70% ;">
   <div class="body-add">
           <section class="body-add-content">
@@ -14,30 +15,42 @@
                     <div class="body-box-add-select">
                         <p  class="box-add-select-title">Tên sản phẩm</p>
                         <input type="text" value="{{old('name')}}" name="name"  placeholder="Nhập tên sản phẩm" class="box-add-select-input">
-                        @error('name')
-                            <span class="message-err" style="color:red;">{{ $message }}</span>
-                        @enderror
+                        <div>
+
+                            @error('name')
+                                <span class="message-err" style="color:red;">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
                     <div class="body-box-add-select">
                         <p class="box-add-select-title">số lượng sản phẩm</p>
                         <input type="text" value="{{old('quantity')}}" name="quantity"  placeholder="Nhập số lượng" class="box-add-select-input">
-                        @error('name')
-                            <span class="message-err" style="color:red;">{{ $message }}</span>
-                        @enderror
+                        <div>
+
+                            @error('quantity')
+                                <span class="message-err" style="color:red;">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
                     <div class="body-box-add-select">
                         <p  class="box-add-select-title">giá sản phẩm</p>
                         <input type="text" value="{{old('price')}}" name="price"   placeholder="Nhập giá sản phẩm" class="box-add-select-input">
-                        @error('name')
-                            <span class="message-err" style="color:red;">{{ $message }}</span>
-                        @enderror
+                        <div>
+                            @error('price')
+                                <span class="message-err" style="color:red;">{{ $message }}</span>
+                            @enderror
+
+                        </div>
                     </div>
                     <div class="body-box-add-select">
                         <p  class="box-add-select-title">giá sale</p>
                         <input type="text" value="{{old('sale_price')}}" name="sale_price"   placeholder="Nhập giá sale" class="box-add-select-input">
-                        @error('sale_price')
-                            <span class="message-err" style="color:red;">{{ $message }}</span>
-                        @enderror
+                        <div>
+
+                            @error('sale_price')
+                                <span class="message-err" style="color:red;">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
                     <div class="body-box-add-select">
                         <label style="font-size:15px ;" for="">Danh mục sản phẩm</label>
@@ -70,15 +83,18 @@
                             Chọn ảnh
                         </label>
                         <input id="file-upload" type="file" name="file" class="form-control dn @error('image') is-invalid @enderror">
+                        <div>
 
-                        @error('file')
-                            <span class="message-err" style="color:red;">{{ $message }}</span>
-                        @enderror
+                            @error('file')
+                                <span class="message-err" style="color:red;">{{ $message }}</span>
+                            @enderror
+                        </div>
+
                     </div>
                     <div class="form-group">
                         <label for="files">Ảnh mô tả</label>
                         <label for="files" style="display:block;height:120px">
-                        <div class="image-preview" style="background-image:url( {{ url('assest') }}/img/upfile.JPG )"></div>
+                            <div class="image-preview" style="background-image:url('{{ url('assest') }}/img/upfile.JPG')"></div>
                         </label>
                         <label for="files" class="custom-file">
                             <i class="fa fa-cloud-upload"></i>

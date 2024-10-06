@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('home')
+
 <div class="content-wrapper" style="width:70% ;">
   <div class="body-add">
           <div class="body-add-content">
@@ -14,16 +15,22 @@
                   <div class="body-box-add-select">
                       <p class="box-add-select-title">Tên menu</p>
                       <input type="text" value="{{old('name')}}" placeholder="Nhập tên menu" name="name" class="box-add-select-input">
-                      @error('name')
-                            <span class="message-err" style="color:red;">{{ $message }}</span>
-                        @enderror
+                      <div>
+                        @error('name')
+                              <span class="message-err" style="color:red;">{{ $message }}</span>
+                          @enderror
+
+                      </div>
                   </div>
                   <div class="body-box-add-select">
                       <p class="box-add-select-title">link</p>
                       <input type="text" value="{{old('link')}}" placeholder="Nhập link" name="link" class="box-add-select-input">
-                      @error('name')
-                            <span class="message-err" style="color:red;">{{ $message }}</span>
-                        @enderror
+                      <div>
+
+                        @error('name')
+                              <span class="message-err" style="color:red;">{{ $message }}</span>
+                          @enderror
+                      </div>
                   </div>
                     <div class="form-group">
                       <label for="input">Chọn trạng thái</label>

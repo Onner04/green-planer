@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('home')
+
 <div class="content-wrapper" style="width:70% ;">
   <div class="body-add">
           <div class="body-add-content">
@@ -14,33 +15,45 @@
                 <div class="body-box-add-select">
                     <p class="box-add-select-title">Tên sản phẩm</p>
                     <input type="text" value="{{$product->name}}" name="name" placeholder="Nhập tên sản phẩm" class="box-add-select-input">
-                        @error('name')
-                            <span class="message-err" style="color:red;">{{ $message }}</span>
-                        @enderror
+                    <div>
+
+                      @error('name')
+                          <span class="message-err" style="color:red;">{{ $message }}</span>
+                      @enderror
+                    </div>
                 </div>
 
                 <div class="body-box-add-select">
                     <p class="box-add-select-title">số lượng sản phẩm</p>
                     <input type="text" value="{{$product->quantity}}" name="quantity" placeholder="Nhập số lượng" class="box-add-select-input">
-                    @error('name')
-                        <span class="message-err" style="color:red;">{{ $message }}</span>
-                    @enderror
+                    <div>
+                      @error('quantity')
+                          <span class="message-err" style="color:red;">{{ $message }}</span>
+                      @enderror
+
+                    </div>
                 </div>
 
                 <div class="body-box-add-select">
                     <p class="box-add-select-title">giá sản phẩm</p>
                     <input type="text" value="{{$product->price}}" name="price" placeholder="Nhập giá sản phẩm" class="box-add-select-input">
-                    @error('name')
-                            <span class="message-err" style="color:red;">{{ $message }}</span>
-                    @enderror
+                    <div>
+
+                      @error('price')
+                              <span class="message-err" style="color:red;">{{ $message }}</span>
+                      @enderror
+                    </div>
                 </div>
 
                 <div class="body-box-add-select">
                     <p class="box-add-select-title">giá sale</p>
                     <input type="text"  value="{{$product->sale_price}}" name="sale_price"  placeholder="Nhập giá sale" class="box-add-select-input">
-                    @error('name')
-                            <span class="message-err" style="color:red;">{{ $message }}</span>
-                    @enderror
+                    <div>
+
+                      @error('sale_price')
+                              <span class="message-err" style="color:red;">{{ $message }}</span>
+                      @enderror
+                    </div>
                   </div>
 
                 <div class="body-box-add-select">

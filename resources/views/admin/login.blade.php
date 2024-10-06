@@ -9,20 +9,21 @@
 </head>
 <body>
 <div class="wrapper">
-            <form action="" method="POST">
+            <form action="{{ route('postLogin.admin') }}" method="POST">
                 @csrf
                 <h1>Login admin</h1>
+                
                 <div class="input-box">
-                    <input type="text" placeholder="Tài khoản">
+                    <input type="email"  name="email" placeholder="Tài khoản ....">
                     <i class='bx bxs-user'></i>
-                    @error('name')
+                    @error('email')
                             <span class="message-err" style="color:red;">{{ $message }}</span>
                         @enderror
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Mật khẩu">
+                    <input type="password"  name="password" placeholder="Mật khẩu ....">
                     <i class='bx bxs-lock-alt'></i>
-                    @error('name')
+                    @error('password')
                             <span class="message-err" style="color:red;">{{ $message }}</span>
                         @enderror
                 </div>
