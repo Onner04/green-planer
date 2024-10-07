@@ -35,7 +35,7 @@ class Cart
             $this->items[$product->id.$height] = $item;
         }
         
-        // Lưu vào session
+        
         session(['cart'=>$this->items]);
     }
 

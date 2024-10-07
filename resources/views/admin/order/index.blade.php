@@ -1,12 +1,6 @@
 @extends('admin.master')
 @section('home')
-<style>
-    @media only screen and (max-width: 1200px){
-        .content-wrapper{
-            width: 100% !important;
-        }
-    }
-</style>
+
 <div class="content-wrapper" style="width:75% ; ">
 
   <div class="child">
@@ -107,6 +101,7 @@
 </div>
 
 @stop
+@section('dele')
 <script>
     
     window.onload = function() {
@@ -118,4 +113,5 @@
         }
     };
 </script>
+@stop
 
