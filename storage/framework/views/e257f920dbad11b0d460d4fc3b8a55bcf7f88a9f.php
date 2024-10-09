@@ -22,7 +22,7 @@
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
-    <?php echo $__env->yieldContent('tinymce'); ?>
+    <?php echo $__env->yieldContent('dele'); ?>
     <?php echo $__env->yieldContent('banner'); ?>
 </body>
 </html><?php /**PATH D:\code\laravel\Green-planer\resources\views/admin/master.blade.php ENDPATH**/ ?>

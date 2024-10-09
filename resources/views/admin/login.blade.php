@@ -7,21 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin</title>
 </head>
-<body>
+<body style="background-image: url('{{url('assest')}}/img/admin-lo.jpg')">
 <div class="wrapper">
             <form action="{{ route('postLogin.admin') }}" method="POST">
                 @csrf
                 <h1>Login admin</h1>
                 
                 <div class="input-box">
-                    <input type="email"  name="email" placeholder="Tài khoản ....">
+                    <input type="email" value="{{ old('email') }}"  name="email" placeholder="Tài khoản ....">
                     <i class='bx bxs-user'></i>
                     @error('email')
                             <span class="message-err" style="color:red;">{{ $message }}</span>
                         @enderror
                 </div>
                 <div class="input-box">
-                    <input type="password"  name="password" placeholder="Mật khẩu ....">
+                    <input type="password" value="{{ old('password') }}"  name="password" placeholder="Mật khẩu ....">
                     <i class='bx bxs-lock-alt'></i>
                     @error('password')
                             <span class="message-err" style="color:red;">{{ $message }}</span>

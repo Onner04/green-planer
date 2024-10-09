@@ -1,5 +1,6 @@
 
 <?php $__env->startSection('home'); ?>
+
 <div class="content-wrapper" style="width:70% ; ">
 
   <div class="child">
@@ -10,7 +11,6 @@
             <div class="content">
                 <?php if(Session::has('message')): ?>
                     <div class="alert alert-success">
-                          <button type="button" data-dismiss="alert" class="close" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
                             <strong>
                               <?php echo e(Session::get('message')); ?>
@@ -77,5 +77,16 @@
 </div>
 
 <?php $__env->stopSection(); ?>
+<script>
+  function chooseFile(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('image').src = e.target.result;
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
 
 <?php echo $__env->make('admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\code\laravel\Green-planer\resources\views/admin/category/index.blade.php ENDPATH**/ ?>

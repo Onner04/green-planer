@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="<?php echo e(url('fontend')); ?>/css/login.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     </head>
-    <body>
+    <body style="background-image: url('<?php echo e(url('assest')); ?>/img/admin-lo.jpg')">
 
         <div class="exit-item" style="margin: 20px;">
             <a href="http://127.0.0.1:8000" style="text-decoration: none; color:#000 ;" class="exit-item-link">Quay lại </a>
@@ -21,7 +21,7 @@
                 <h1>Đăng nhập</h1>
                 <h2>Đăng nhập để nhận nhiều ưu đãi hấp dẫn</h2>
                     <div class="input-box">
-                        <input type="text" class="is-invalid" name="name" placeholder="Tên người dùng ...">
+                        <input type="text"  class="is-invalid" name="name" placeholder="Tên người dùng ...">
                         <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -35,7 +35,7 @@ unset($__errorArgs, $__bag); ?>
                         <i class='bx bxs-user'></i>
                     </div>
                     <div class="input-box">
-                        <input type="email" class="is-invalid" name="email" placeholder="Email ...">
+                        <input type="email" class="is-invalid" value="<?php echo e(old('email')); ?>" name="email" placeholder="Email ...">
                         <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -49,7 +49,7 @@ unset($__errorArgs, $__bag); ?>
                         <i class='bx bxs-user'></i>
                     </div>
                     <div class="input-box">
-                        <input type="password" class="is-invalid" name="password" placeholder="Mật khẩu ....">
+                        <input type="password" value="<?php echo e(old('password')); ?>" class="is-invalid" name="password" placeholder="Mật khẩu ....">
                         <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

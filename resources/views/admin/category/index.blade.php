@@ -11,7 +11,6 @@
             <div class="content">
                 @if(Session::has('message'))
                     <div class="alert alert-success">
-                          <button type="button" data-dismiss="alert" class="close" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
                             <strong>
                               {{ Session::get('message') }}
@@ -77,3 +76,14 @@
 </div>
 
 @stop
+<script>
+  function chooseFile(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('image').src = e.target.result;
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>

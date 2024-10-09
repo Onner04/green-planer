@@ -11,7 +11,7 @@
               <div class="content">
               @if(Session::has('message'))
                     <div class="alert alert-success">
-                          <button type="button" data-dismiss="alert" class="close" aria-label="Close">
+                          
                             <span aria-hidden="true">&times;</span></button>
                             <strong>
                               {{ Session::get('message') }}

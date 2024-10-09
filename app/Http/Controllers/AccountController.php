@@ -50,7 +50,7 @@ class AccountController extends Controller
 
     public function login(Request $req) 
     {
-        $credentials = $req->only('email','password');
+        $credentials = $req->only('name','email','password');
 
         if(Auth::attempt($credentials))
         {

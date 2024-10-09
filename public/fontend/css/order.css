@@ -216,3 +216,13 @@ button:focus {
     font-size: 1.5rem;
     font-weight: 700;
 }
+.prize-exit{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+    font-size: 1.4rem;
+}
+.prize-exit-link{
+    text-decoration: none;
+    color: #000;
+}

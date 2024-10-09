@@ -1,6 +1,7 @@
 
 <?php $__env->startSection('home'); ?>
-<div class="content-wrapper" style="width:75% ; ">
+
+<div class="content-wrapper" style="width:79% ; ">
 
   <div class="child">
           <div class="child-header">
@@ -19,7 +20,6 @@
                 <?php endif; ?>
               </div>
              <div class="child-box-header">
-             <a href="" class="child-box-header__add" >+ Thêm sản phẩm</a>
 
                <div class="child-box-search">
                    <input type="text" placeholder="Search" >
@@ -72,7 +72,7 @@
                                         <span class="label label-success">Đã xác nhận</span>
                                     <?php endif; ?>
                                 </td>
-                                <td >
+                                <td  style="display: flex;">
                                     <form action="<?php echo e(route('order.update', $value->id)); ?>" method="post">
                                         <?php echo csrf_field(); ?>
                                         <?php echo method_field('PUT'); ?>
@@ -101,6 +101,7 @@
 </div>
 
 <?php $__env->stopSection(); ?>
+<?php $__env->startSection('dele'); ?>
 <script>
     
     window.onload = function() {
@@ -112,6 +113,7 @@
         }
     };
 </script>
+<?php $__env->stopSection(); ?>
 
 
 <?php echo $__env->make('admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\code\laravel\Green-planer\resources\views/admin/order/index.blade.php ENDPATH**/ ?>

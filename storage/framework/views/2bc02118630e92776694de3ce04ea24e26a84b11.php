@@ -1,5 +1,6 @@
 
 <?php $__env->startSection('home'); ?>
+
 <div class="content-wrapper" style="width:70% ; ">
 
   <div class="child">
@@ -10,7 +11,7 @@
               <div class="content">
               <?php if(Session::has('message')): ?>
                     <div class="alert alert-success">
-                          <button type="button" data-dismiss="alert" class="close" aria-label="Close">
+                          
                             <span aria-hidden="true">&times;</span></button>
                             <strong>
                               <?php echo e(Session::get('message')); ?>

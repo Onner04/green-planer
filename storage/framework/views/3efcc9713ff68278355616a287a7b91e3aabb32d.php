@@ -1,5 +1,6 @@
 
 <?php $__env->startSection('home'); ?>
+
 <div class="content-wrapper" style="width:70% ;">
   <div class="body-add">
           <div class="body-add-content">
@@ -14,16 +15,19 @@
                 <div class="body-box-add-select">
                     <p class="box-add-select-title">Tên menu</p>
                     <input type="text" value="<?php echo e(old('name')); ?>" name="name" placeholder="Nhập tên menu" class="box-add-select-input">
-                    <?php $__errorArgs = ['name'];
+                    <div>
+                      <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                        <span class="message-err" style="color:red;"><?php echo e($message); ?></span>
-                    <?php unset($message);
+                          <span class="message-err" style="color:red;"><?php echo e($message); ?></span>
+                      <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+
+                    </div>
                 </div>
                 <div class="body-box-add-select">
                     <label style="font-size:15px ;" for="">Danh mục cha</label>

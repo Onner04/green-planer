@@ -4,7 +4,7 @@
 @stop
 @section('home')
 <div class="content-wrapper">
-<div class="prize">
+    <div class="prize">
             <h1 class="prize-title">THANKS YOU !</h1>
 
             <p class="prize-content">
@@ -57,6 +57,11 @@ Hãy mở sản phẩm ngay nhé
                     
                 </div>
             </div>
-        </div>
+
+            <div class="prize-exit" >
+                <a href="http://127.0.0.1:8000/" class="prize-exit-link"><< Trở lại </a>
+                <a href="http://127.0.0.1:8000/" class="prize-exit-link">Tiếp tục mua hàng >></a>
+            </div>
+    </div>
 </div>
 @stop

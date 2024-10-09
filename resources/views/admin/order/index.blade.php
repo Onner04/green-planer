@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('home')
 
-<div class="content-wrapper" style="width:75% ; ">
+<div class="content-wrapper" style="width:79% ; ">
 
   <div class="child">
           <div class="child-header">
@@ -19,7 +19,6 @@
                 @endif
               </div>
              <div class="child-box-header">
-             <a href="" class="child-box-header__add" >+ Thêm sản phẩm</a>
 
                <div class="child-box-search">
                    <input type="text" placeholder="Search" >
@@ -72,7 +71,7 @@
                                         <span class="label label-success">Đã xác nhận</span>
                                     @endif
                                 </td>
-                                <td >
+                                <td  style="display: flex;">
                                     <form action="{{ route('order.update', $value->id) }}" method="post">
                                         @csrf
                                         @method('PUT')

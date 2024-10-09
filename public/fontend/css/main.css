@@ -793,12 +793,14 @@
 .product-item-detail-list__child{
     list-style: none;
     width: 30%;
+    overflow: hidden;
+    height: 136px;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
 }
 .product-item-detail-list__child-img{
-    width: 85%;
+    width: 100%;
     border-radius: 4px;
 }
 

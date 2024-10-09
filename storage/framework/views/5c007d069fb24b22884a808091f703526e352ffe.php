@@ -1,5 +1,12 @@
 
 <?php $__env->startSection('home'); ?>
+<style>
+    @media only screen and (max-width: 768px) {
+        table{
+            width: 100%;
+        }
+    }
+</style>
 <div class="app__container" style="display:flex ;justify-content:center ; ">
     <div class="container-body"style="margin-top: 100px; width:85%">
         <div class="branch">

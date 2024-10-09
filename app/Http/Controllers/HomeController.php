@@ -49,13 +49,9 @@ class HomeController extends Controller
         return view('home',compact('banner','category','product','Topbuy'));
     }
     public function product($id) 
-    {
-        
-       
+    {   
         $category = categories::all()->sortByDesc("id");
-       
         $product = products::find($id); 
-
         $cate_id = null;
         $cateChild = null;
         $productRelate = collect();  
@@ -107,7 +103,6 @@ class HomeController extends Controller
         $pro = array_count_values($ads);
         arsort($pro);
         $arr = array_keys($pro);
-
         if (!empty($arr)) {
             $product = products::whereIn('id', $arr)
                         ->orderByRaw("FIELD(id," . implode(',', $arr) . ")")
@@ -116,7 +111,6 @@ class HomeController extends Controller
         } else {
             $product = products::take(8)->get();
         }
-
         return view('TopBuy',compact('product','name'));
     }
 
